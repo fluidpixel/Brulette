@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "bruletteLogin.h"
 
-@interface bruletteViewController : UIViewController
+@interface bruletteViewController : UIViewController <UITableViewDelegate>
 
 @property(nonatomic, strong) bruletteLogin* bruletteLogin;
 @property (weak, nonatomic) IBOutlet UITableView *teamTableView;

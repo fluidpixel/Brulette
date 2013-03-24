@@ -156,17 +156,13 @@
 		[items addObject:[bruletteTeam toDoItemWithName:teamDict]];
 	}
 	
-	NSLog(@"items: %@", items);
+	//reload the table in main view with data
 	[teamTableView reloadData];
 
 }
 
-
+#warning these shouldn't be here. Move to view controller
 #pragma mark - UITableViewDataSource protocol methods
--(void) loadView
-{
-	[self getTeams];
-}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return items.count;

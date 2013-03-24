@@ -58,11 +58,22 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your Teams" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tsn-RV-1ih">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="161" id="1wN-ja-iW3"/>
+                                    <constraint firstAttribute="height" constant="21" id="Tmz-wu-7vB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Tsn-RV-1ih" firstAttribute="centerX" secondItem="74l-p4-pzk" secondAttribute="centerX" type="default" id="1pJ-k7-erg"/>
+                            <constraint firstItem="Tsn-RV-1ih" firstAttribute="top" secondItem="3" secondAttribute="top" constant="74" id="CJQ-ei-tH0"/>
+                            <constraint firstItem="74l-p4-pzk" firstAttribute="top" secondItem="Tsn-RV-1ih" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="UQc-fW-Mgt"/>
                             <constraint firstItem="74l-p4-pzk" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="ici-Ar-Imy"/>
-                            <constraint firstItem="74l-p4-pzk" firstAttribute="top" secondItem="3" secondAttribute="top" constant="103" id="jI9-hm-JcG"/>
                             <constraint firstItem="74l-p4-pzk" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="yH1-NL-ICD"/>
                         </constraints>
                     </view>
@@ -74,6 +85,24 @@
             </objects>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="bruletteTeamCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteTeamCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="teamName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="teamSlug" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="bruletteViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="teamTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -25,14 +25,11 @@
 	// Do any additional setup after loading the view, typically from a nib.
 
 	self.bruletteLogin = [[bruletteLogin alloc] init];
-	
-	//delegate for reloading table
-	[self.bruletteLogin setTableView:self.teamTableView];
-	
+
+	[self.bruletteLogin setTeamTableView:self.teamTableView];
+
 	[self.teamTableView setDataSource:self.bruletteLogin];
 	[self.teamTableView setDelegate:self.bruletteLogin];
-	
-//	self.view = self.bruletteLogin.tableView;
 	
 	NSString *auth_token = [[NSUserDefaults standardUserDefaults] objectForKey:@"auth_token"];
 	
