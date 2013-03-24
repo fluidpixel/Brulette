@@ -46,6 +46,13 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Updates the device token and registers the token with UA.
     [[UAPush shared] registerDeviceToken:deviceToken];
+	
+	[[NSUserDefaults standardUserDefaults] setObject:deviceToken forKey:@"deviceToken"];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+    NSLog(@"FAILED TO REGISTER FOR PUSH NOTIFICATIONS");
+    NSLog(@"%@", error.userInfo);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
@@ -61,6 +68,8 @@
 	else
 	{
 		NSLog(@"alert in background");
+
+		[application setApplicationIconBadgeNumber:0];
 	}
 }
 

@@ -1,18 +1,74 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--Brulette View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="bruletteViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="74l-p4-pzk">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="251" id="GBi-nM-jgx"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bruletteTeamCell" rowHeight="64" id="wpn-rE-pbZ" customClass="bruletteTeamCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="63"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Team Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sxi-2v-dVJ">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="128" id="h55-Ny-hKN"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="slug" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZv-zf-XWA">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="128" id="mdP-TE-8ne"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Sxi-2v-dVJ" firstAttribute="leading" secondItem="wpn-rE-pbZ" secondAttribute="leading" constant="20" type="default" id="HPx-pn-tB6"/>
+                                            <constraint firstItem="Sxi-2v-dVJ" firstAttribute="top" secondItem="wpn-rE-pbZ" secondAttribute="top" constant="21" id="bbu-zq-XCl"/>
+                                            <constraint firstItem="mZv-zf-XWA" firstAttribute="leading" secondItem="Sxi-2v-dVJ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="lD6-Zw-iki"/>
+                                            <constraint firstItem="mZv-zf-XWA" firstAttribute="baseline" secondItem="Sxi-2v-dVJ" secondAttribute="baseline" type="default" id="p5U-3v-szg"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="teamName" destination="Sxi-2v-dVJ" id="C5X-GQ-MHR"/>
+                                            <outlet property="teamSlug" destination="mZv-zf-XWA" id="GMf-gs-awH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="74l-p4-pzk" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="ici-Ar-Imy"/>
+                            <constraint firstItem="74l-p4-pzk" firstAttribute="top" secondItem="3" secondAttribute="top" constant="103" id="jI9-hm-JcG"/>
+                            <constraint firstItem="74l-p4-pzk" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="yH1-NL-ICD"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="teamTableView" destination="74l-p4-pzk" id="zLf-sb-m9G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
