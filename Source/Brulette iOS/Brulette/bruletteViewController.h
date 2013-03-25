@@ -13,5 +13,7 @@
 
 @property(nonatomic, strong) bruletteLogin* bruletteLogin;
 @property (weak, nonatomic) IBOutlet UITableView *teamTableView;
+@property (weak, nonatomic) IBOutlet UITextField *slugTextField;
+- (IBAction)joinTeam:(id)sender;
 
 @end

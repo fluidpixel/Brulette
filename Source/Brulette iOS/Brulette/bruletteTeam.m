@@ -14,6 +14,8 @@
     if (self = [super init]) {
 		self.name = [team objectForKey:@"name"];
 		self.slug = [team objectForKey:@"slug"];
+		self.teamId = [[team objectForKey:@"id"] stringValue];
+		self.password = [team objectForKey:@"password"];
     }
     return self;
 }
@@ -23,3 +25,4 @@
 }
 
 @end
+

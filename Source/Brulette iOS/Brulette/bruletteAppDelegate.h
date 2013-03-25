@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface bruletteAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

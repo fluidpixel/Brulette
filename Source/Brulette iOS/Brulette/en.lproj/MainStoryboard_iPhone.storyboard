@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="oP2-eI-Hc8">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -9,7 +9,7 @@
             <objects>
                 <viewController id="2" customClass="bruletteViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="74l-p4-pzk">
@@ -61,51 +61,202 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your Teams" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tsn-RV-1ih">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="161" id="1wN-ja-iW3"/>
-                                    <constraint firstAttribute="height" constant="21" id="Tmz-wu-7vB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="PD6MHZdb" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Bx-ED-ViU">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="121" id="Nqv-FR-uNI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNJ-Wf-CkJ">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="JOIN">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="joinTeam:" destination="2" eventType="touchUpInside" id="E8a-B8-1MV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Tsn-RV-1ih" firstAttribute="centerX" secondItem="74l-p4-pzk" secondAttribute="centerX" type="default" id="1pJ-k7-erg"/>
-                            <constraint firstItem="Tsn-RV-1ih" firstAttribute="top" secondItem="3" secondAttribute="top" constant="74" id="CJQ-ei-tH0"/>
-                            <constraint firstItem="74l-p4-pzk" firstAttribute="top" secondItem="Tsn-RV-1ih" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="UQc-fW-Mgt"/>
+                            <constraint firstAttribute="trailing" secondItem="zNJ-Wf-CkJ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="3nW-if-bnp"/>
+                            <constraint firstItem="74l-p4-pzk" firstAttribute="top" secondItem="Tsn-RV-1ih" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="4t5-ia-9YJ"/>
+                            <constraint firstItem="3Bx-ED-ViU" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="9kC-Tt-rfO"/>
+                            <constraint firstItem="3Bx-ED-ViU" firstAttribute="baseline" secondItem="zNJ-Wf-CkJ" secondAttribute="baseline" type="default" id="Bh5-RR-Pzj"/>
+                            <constraint firstAttribute="bottom" secondItem="zNJ-Wf-CkJ" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="LBS-jR-zJd"/>
+                            <constraint firstItem="Tsn-RV-1ih" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="fQp-pg-t65"/>
+                            <constraint firstItem="74l-p4-pzk" firstAttribute="top" secondItem="3" secondAttribute="top" constant="49" id="fSs-uT-k2H"/>
                             <constraint firstItem="74l-p4-pzk" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="ici-Ar-Imy"/>
                             <constraint firstItem="74l-p4-pzk" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="yH1-NL-ICD"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="VYn-5D-wbe"/>
                     <connections>
+                        <outlet property="slugTextField" destination="3Bx-ED-ViU" id="KAE-vu-yGT"/>
                         <outlet property="teamTableView" destination="74l-p4-pzk" id="zLf-sb-m9G"/>
+                        <segue destination="XcJ-dC-OJv" kind="push" identifier="teamPush" id="Vzj-vw-Fau"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="228" y="-55"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iX6-Wx-KYJ">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="oP2-eI-Hc8" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nDT-29-5mb">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2" kind="relationship" relationship="rootViewController" id="xog-Gy-BSm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HCB-1H-fEQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-323" y="-60"/>
+        </scene>
+        <!--Brulette Team View Controller-->
+        <scene sceneID="KHL-Hz-HNR">
+            <objects>
+                <viewController id="XcJ-dC-OJv" customClass="bruletteTeamViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PtJ-Su-Ueb">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Team Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84V-QC-Dwj">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="Wzp-W8-W6T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJ3-aY-95e">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Leave Team">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="leaveTeamAction:" destination="XcJ-dC-OJv" eventType="touchUpInside" id="Vml-iX-QCc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeM-rY-0pv">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Delete Team">
+                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteTeamAction:" destination="XcJ-dC-OJv" eventType="touchUpInside" id="pJg-Xq-001"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DwC-BC-fl2">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="d5P-V2-Qy0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Start Round">
+                                    <color key="titleColor" red="0.32156863810000003" green="0.66274511810000003" blue="0.3058823645" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startRoundAction:" destination="XcJ-dC-OJv" eventType="touchUpInside" id="Tro-p1-ygE"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="grd-dO-sco">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="memberCell" id="y6K-6U-Ckx" customClass="bruletteMemberCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Team Member" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pg-pf-kMf">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="170" id="cMB-m3-Dxx"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="7pg-pf-kMf" firstAttribute="leading" secondItem="y6K-6U-Ckx" secondAttribute="leading" constant="20" type="default" id="qcA-Ze-Maj"/>
+                                            <constraint firstItem="7pg-pf-kMf" firstAttribute="top" secondItem="y6K-6U-Ckx" secondAttribute="top" constant="11" id="sPj-mw-yTb"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="teamMemberLabel" destination="7pg-pf-kMf" id="rZG-hd-NVn"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="XcJ-dC-OJv" id="8Sw-3d-Cte"/>
+                                    <outlet property="delegate" destination="XcJ-dC-OJv" id="cbn-Qq-6sa"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="grd-dO-sco" firstAttribute="trailing" secondItem="PtJ-Su-Ueb" secondAttribute="trailing" type="default" id="2fJ-e8-02a"/>
+                            <constraint firstItem="grd-dO-sco" firstAttribute="top" secondItem="84V-QC-Dwj" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="60D-Ts-bdE"/>
+                            <constraint firstItem="FeM-rY-0pv" firstAttribute="leading" secondItem="PtJ-Su-Ueb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Aal-hL-5c4"/>
+                            <constraint firstAttribute="bottom" secondItem="JJ3-aY-95e" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="CML-Td-oqk"/>
+                            <constraint firstItem="84V-QC-Dwj" firstAttribute="top" secondItem="PtJ-Su-Ueb" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Cgk-Nn-cXh"/>
+                            <constraint firstItem="84V-QC-Dwj" firstAttribute="trailing" secondItem="DwC-BC-fl2" secondAttribute="trailing" type="default" id="DOb-8O-2n4"/>
+                            <constraint firstAttribute="bottom" secondItem="FeM-rY-0pv" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="SWz-xd-SWg"/>
+                            <constraint firstItem="grd-dO-sco" firstAttribute="leading" secondItem="PtJ-Su-Ueb" secondAttribute="leading" type="default" id="VdW-2F-EVr"/>
+                            <constraint firstAttribute="trailing" secondItem="JJ3-aY-95e" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="XJz-17-acA"/>
+                            <constraint firstItem="DwC-BC-fl2" firstAttribute="leading" secondItem="PtJ-Su-Ueb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Xd8-OC-306"/>
+                            <constraint firstItem="FeM-rY-0pv" firstAttribute="top" secondItem="DwC-BC-fl2" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="t2M-KZ-jln"/>
+                            <constraint firstItem="FeM-rY-0pv" firstAttribute="baseline" secondItem="JJ3-aY-95e" secondAttribute="baseline" type="default" id="uOA-ZR-AOJ"/>
+                            <constraint firstItem="DwC-BC-fl2" firstAttribute="top" secondItem="grd-dO-sco" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ufA-m6-RUZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Emp-Kk-YtA"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="deleteTeamButton" destination="FeM-rY-0pv" id="It8-aS-J9a"/>
+                        <outlet property="leaveTeamButton" destination="JJ3-aY-95e" id="XG3-DQ-U7r"/>
+                        <outlet property="teamNameLabel" destination="84V-QC-Dwj" id="kaz-39-AcD"/>
+                        <segue destination="2" kind="push" identifier="returnSegue" id="ViB-n3-4e1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eR8-VS-HsA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="866" y="-98"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="bruletteTeamCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteTeamCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="teamName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="teamSlug" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="bruletteViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="teamTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="ViB-n3-4e1"/>
+    </inferredMetricsTieBreakers>
 </document>

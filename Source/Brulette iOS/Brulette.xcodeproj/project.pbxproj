@@ -33,6 +33,7 @@
 		5417A23A16FC7FA200E89D0F /* libraries in Resources */ = {isa = PBXBuildFile; fileRef = 5417A23916FC7FA200E89D0F /* libraries */; };
 		545799EB16FDFC9A000F0E9A /* bruletteTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 545799EA16FDFC9A000F0E9A /* bruletteTeamCell.m */; };
 		545799EE16FE0125000F0E9A /* bruletteTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 545799ED16FE0125000F0E9A /* bruletteTeam.m */; };
+		546BF38816FF4F4F00E2AB86 /* bruletteTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546BF38716FF4F4E00E2AB86 /* bruletteTeamViewController.m */; };
 		5481445216FC98960036E837 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5481445116FC98960036E837 /* Icon.png */; };
 		5481445F16FC98DA0036E837 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 5481445616FC98DA0036E837 /* Icon-Small-50.png */; };
 		5481446016FC98DA0036E837 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5481445716FC98DA0036E837 /* Icon-Small-50@2x.png */; };
@@ -44,6 +45,8 @@
 		5481446716FC98EF0036E837 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 5481446616FC98EF0036E837 /* Icon-72.png */; };
 		5481446916FC98FD0036E837 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5481446816FC98FD0036E837 /* Icon-72@2x.png */; };
 		5481446D16FCBF2E0036E837 /* bruletteLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5481446C16FCBF2E0036E837 /* bruletteLogin.m */; };
+		54A1373C17006BF40050116D /* bruletteLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A1373B17006BF40050116D /* bruletteLocationManager.m */; };
+		54A13740170078970050116D /* bruletteMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A1373F170078970050116D /* bruletteMemberCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +83,8 @@
 		545799EA16FDFC9A000F0E9A /* bruletteTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bruletteTeamCell.m; sourceTree = "<group>"; };
 		545799EC16FE0125000F0E9A /* bruletteTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bruletteTeam.h; sourceTree = "<group>"; };
 		545799ED16FE0125000F0E9A /* bruletteTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bruletteTeam.m; sourceTree = "<group>"; };
+		546BF38616FF4F4E00E2AB86 /* bruletteTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bruletteTeamViewController.h; sourceTree = "<group>"; };
+		546BF38716FF4F4E00E2AB86 /* bruletteTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bruletteTeamViewController.m; sourceTree = "<group>"; };
 		5481445116FC98960036E837 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = "App Icon [Rounded]/Icon.png"; sourceTree = "<group>"; };
 		5481445616FC98DA0036E837 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "App Icon [Rounded]/Icon-Small-50.png"; sourceTree = "<group>"; };
 		5481445716FC98DA0036E837 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50@2x.png"; path = "App Icon [Rounded]/Icon-Small-50@2x.png"; sourceTree = "<group>"; };
@@ -92,6 +97,10 @@
 		5481446816FC98FD0036E837 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "App Icon [Rounded]/Icon-72@2x.png"; sourceTree = "<group>"; };
 		5481446B16FCBF2E0036E837 /* bruletteLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bruletteLogin.h; sourceTree = "<group>"; };
 		5481446C16FCBF2E0036E837 /* bruletteLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bruletteLogin.m; sourceTree = "<group>"; };
+		54A1373A17006BF40050116D /* bruletteLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bruletteLocationManager.h; sourceTree = "<group>"; };
+		54A1373B17006BF40050116D /* bruletteLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bruletteLocationManager.m; sourceTree = "<group>"; };
+		54A1373E170078970050116D /* bruletteMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bruletteMemberCell.h; sourceTree = "<group>"; };
+		54A1373F170078970050116D /* bruletteMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bruletteMemberCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,14 +168,17 @@
 		5417A1FF16FC7B6A00E89D0F /* Brulette */ = {
 			isa = PBXGroup;
 			children = (
-				545799E816FDFC70000F0E9A /* Team Tables */,
+				545799E816FDFC70000F0E9A /* Table Cells */,
 				5417A20816FC7B6A00E89D0F /* bruletteAppDelegate.h */,
 				5417A20916FC7B6A00E89D0F /* bruletteAppDelegate.m */,
 				5417A21116FC7B6A00E89D0F /* MainStoryboard_iPhone.storyboard */,
 				5417A21416FC7B6A00E89D0F /* MainStoryboard_iPad.storyboard */,
 				5417A21716FC7B6A00E89D0F /* bruletteViewController.h */,
 				5417A21816FC7B6A00E89D0F /* bruletteViewController.m */,
+				546BF38616FF4F4E00E2AB86 /* bruletteTeamViewController.h */,
+				546BF38716FF4F4E00E2AB86 /* bruletteTeamViewController.m */,
 				5481446A16FCBF070036E837 /* Data */,
+				54A1373917006BDE0050116D /* Utilities */,
 				5417A20016FC7B6A00E89D0F /* Supporting Files */,
 			);
 			path = Brulette;
@@ -188,13 +200,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		545799E816FDFC70000F0E9A /* Team Tables */ = {
+		545799E816FDFC70000F0E9A /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
 				545799E916FDFC9A000F0E9A /* bruletteTeamCell.h */,
 				545799EA16FDFC9A000F0E9A /* bruletteTeamCell.m */,
+				54A1373E170078970050116D /* bruletteMemberCell.h */,
+				54A1373F170078970050116D /* bruletteMemberCell.m */,
 			);
-			name = "Team Tables";
+			name = "Table Cells";
 			sourceTree = "<group>";
 		};
 		5481445316FC98BF0036E837 /* icons */ = {
@@ -223,6 +237,15 @@
 				5481446C16FCBF2E0036E837 /* bruletteLogin.m */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		54A1373917006BDE0050116D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				54A1373A17006BF40050116D /* bruletteLocationManager.h */,
+				54A1373B17006BF40050116D /* bruletteLocationManager.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +334,9 @@
 				5481446D16FCBF2E0036E837 /* bruletteLogin.m in Sources */,
 				545799EB16FDFC9A000F0E9A /* bruletteTeamCell.m in Sources */,
 				545799EE16FE0125000F0E9A /* bruletteTeam.m in Sources */,
+				546BF38816FF4F4F00E2AB86 /* bruletteTeamViewController.m in Sources */,
+				54A1373C17006BF40050116D /* bruletteLocationManager.m in Sources */,
+				54A13740170078970050116D /* bruletteMemberCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
