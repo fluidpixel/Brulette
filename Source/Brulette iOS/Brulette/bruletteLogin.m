@@ -12,10 +12,10 @@
 #import "bruletteLocationManager.h"
 
 #define BgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-#define usersURL [NSURL URLWithString:@"http://salty-plains-8447.herokuapp.com/api/users"]
-#define teamsURL [NSURL URLWithString:@"http://salty-plains-8447.herokuapp.com/api/teams"]
-#define membershipURL [NSURL URLWithString:@"http://salty-plains-8447.herokuapp.com/api/memberships"]
-#define roundsURL [NSURL URLWithString:@"http://salty-plains-8447.herokuapp.com/api/rounds"]
+#define usersURL [NSURL URLWithString:@"https://salty-plains-8447.herokuapp.com/api/users"]
+#define teamsURL [NSURL URLWithString:@"https://salty-plains-8447.herokuapp.com/api/teams"]
+#define membershipURL [NSURL URLWithString:@"https://salty-plains-8447.herokuapp.com/api/memberships"]
+#define roundsURL [NSURL URLWithString:@"https://salty-plains-8447.herokuapp.com/api/rounds"]
 
 @implementation bruletteLogin
 @synthesize teamTableView;
@@ -35,6 +35,13 @@
 	if([self delegate] != nil)
 		[[self delegate] returnTeamMembersWithTeamId:teamMemberArray];
 }
+
+-(void)returnMemberId:(int)membershipId
+{
+	if([self delegate] != nil)
+		[[self delegate] returnMemberId:membershipId];
+}
+
 -(void)processRequest:(NSString *)postBody HTTPMethod:(NSString *)HTTPMethod selector:(NSString*)selector url:(NSURL*)url
 {
 	NSData *postData = [postBody dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
@@ -82,11 +89,18 @@
 			NSDictionary* data = [NSJSONSerialization JSONObjectWithData:response
 																 options:kNilOptions
 																   error:&requestError];
-			NSLog(@"response: %@", data);
-			SEL theSelector = NSSelectorFromString(selector);
-			
-			[self performSelectorOnMainThread:theSelector withObject:data waitUntilDone:YES];
-
+			if (data)
+			{
+				NSLog(@"response: %@", data);
+				SEL theSelector = NSSelectorFromString(selector);
+				
+				[self performSelectorOnMainThread:theSelector withObject:data waitUntilDone:YES];
+			}
+			else //not a json array therefore somethings probably gone wrong so extract error
+			{
+				NSString *errorString = [[NSString alloc] initWithData:response encoding:NSASCIIStringEncoding];
+				NSLog(@"response: %@", errorString);
+			}
 		}
 		
 	});
@@ -234,7 +248,16 @@
 	[self processRequest:postBody HTTPMethod:@"GET" selector:@"processGetTeamBySlug:" url:url];
 }
 
-
+-(void)updateTeamMembershipWithId:(NSString *)membershipId active:(NSString *)active
+{
+	//curl -X PUT https://salty-plains-8447.herokuapp.com/api/memberships/2 --data "auth_token=MjpgZsA5npo1s3tsq6jn&membership[active]=false"
+	
+	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@&membership[active]=%@", auth_token, active];
+	NSURL* url = [membershipURL URLByAppendingPathComponent:membershipId];
+	
+	[self processRequest:postBody HTTPMethod:@"PUT" selector:@"processUpdateTeamMembership:" url:url];
+	
+}
 -(void)startRoundWithTeamId:(NSString *)teamId
 {
 	//curl POST https://localhost:3000/api/rounds --data "auth_token=MjpgZsA5npo1s3tsq6jn&team_id=1&volunteer=false&time=100"
@@ -242,6 +265,9 @@
 	
 	[self processRequest:postBody HTTPMethod:@"POST" selector:@"processStartRound:" url:roundsURL];
 }
+
+
+
 #pragma mark Process Responses
 -(void)processUser:(NSDictionary*)response
 {
@@ -332,7 +358,10 @@
 		NSLog(@"member_id: %@", [member objectForKey:@"user_id"]);
 	}
 	
+	NSDictionary *user_membership = [response objectForKey:@"user_membership"];
+	
 	[self returnTeamMembersWithTeamId:memberArray];
+	[self returnMemberId:[[user_membership objectForKey:@"id"] intValue]];
 }
 
 -(void)processJoinTeamWithSlug:(NSDictionary *)response
@@ -354,6 +383,10 @@
 {
 	NSLog(@"processLeaveTeam");
 	
+}
+-(void)processUpdateTeamMembership:(NSDictionary *)response
+{
+	NSLog(@"updatedTeamMembership");
 }
 
 -(void)processStartRound:(NSDictionary *)response

@@ -41,9 +41,17 @@
 	
 }
 
--(void)returnTeamMembersWithTeamId:(NSArray*)teamMemberArray;
+-(void)returnTeamMembersWithTeamId:(NSArray*)teamMemberArray
 {
-	NSLog(@"teamMembers: %@", teamMemberArray);
+	teamMembers = [[NSMutableArray alloc] init];
+	teamMembers = [NSMutableArray arrayWithArray:teamMemberArray];
+	
+	[self.memberTable reloadData];
+}
+
+-(void)returnMemberId:(int)membershipId
+{
+	membership_id = membershipId;
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,21 +62,22 @@
 
 - (IBAction)leaveTeamAction:(id)sender
 {
-	[self.bruletteLogin leaveTeamWithMembershipId:self.bruletteTeam.teamId];
+
+	[bruletteDataClass leaveTeamWithMembershipId:[NSString stringWithFormat:@"%i", membership_id]];
 	
 	//[self performSegueWithIdentifier:@"returnSegue" sender:self];
 }
 
 - (IBAction)deleteTeamAction:(id)sender
 {
-	[self.bruletteLogin deleteTeamWithId:self.bruletteTeam.teamId];
+	[bruletteDataClass deleteTeamWithId:self.bruletteTeam.teamId];
 	
 	//[self performSegueWithIdentifier:@"returnSegue" sender:self];
 }
 
 - (IBAction)startRoundAction:(id)sender
 {
-	[self.bruletteLogin startRoundWithTeamId:self.bruletteTeam.teamId];
+	[bruletteDataClass startRoundWithTeamId:self.bruletteTeam.teamId];
 }
 
 #pragma mark - UITableViewDataSource protocol methods
@@ -88,20 +97,58 @@
     
 	if (index < teamMembers.count)
 	{
-		bruletteTeam *item = teamMembers[index];
+		//bruletteTeam *item = teamMembers[index];
+		NSDictionary *member = teamMembers[index];
 		
 		// set the text
-		cell.teamMemberLabel.text = item.name;
+		cell.teamMemberLabel.text = [member objectForKey:@"user_name"];
+		if ([member objectForKey:@"active"])
+		{
+			[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+		}
+		else
+		{
+			[cell setAccessoryType:UITableViewCellAccessoryNone];
+		}
 
-		[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 	}
 	else
 	{
 		cell.teamMemberLabel.text = @"New Member";
-		[cell setAccessoryType:UITableViewCellAccessoryNone];
+		[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 	}
 	
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	bruletteMemberCell *selectedCell = (bruletteMemberCell*) [tableView cellForRowAtIndexPath:indexPath];
+	
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	
+	int index = [indexPath row];
+	
+	NSDictionary *member = teamMembers[index];
+	
+	if ([selectedCell.teamMemberLabel.text isEqualToString:@"New Member"])
+	{
+		//[self.bruletteLogin addTeam];
+	}
+	else
+	{
+		if(selectedCell.accessoryType == UITableViewCellAccessoryCheckmark)
+		{
+			[selectedCell setAccessoryType:UITableViewCellAccessoryNone];
+			[bruletteDataClass updateTeamMembershipWithId:[[member objectForKey:@"id"] stringValue] active:@"false"];
+		}
+		else
+		{
+			[selectedCell setAccessoryType:UITableViewCellAccessoryCheckmark];
+			[bruletteDataClass updateTeamMembershipWithId:[[member objectForKey:@"id"] stringValue] active:@"true"];
+		}
+	}
+}
+
 
 @end

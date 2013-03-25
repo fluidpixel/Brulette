@@ -12,15 +12,16 @@
 
 @interface bruletteTeamViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
-	NSArray* teamMembers;
-	
+	NSMutableArray* teamMembers;
+	int membership_id;
 	bruletteLogin* bruletteDataClass;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *teamNameLabel;
 
-@property(nonatomic, strong) bruletteLogin* bruletteLogin;
 @property (nonatomic, strong) bruletteTeam *bruletteTeam;
+
+@property (weak, nonatomic) IBOutlet UITableView *memberTable;
 
 - (IBAction)startRoundAction:(id)sender;
 - (IBAction)leaveTeamAction:(id)sender;

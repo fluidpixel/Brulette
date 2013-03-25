@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "bruletteLogin.h"
 
-@interface bruletteViewController : UIViewController <UITableViewDelegate>
+@interface bruletteViewController : UIViewController <UITableViewDelegate, UITextFieldDelegate>
 
 @property(nonatomic, strong) bruletteLogin* bruletteLogin;
 @property (weak, nonatomic) IBOutlet UITableView *teamTableView;
 @property (weak, nonatomic) IBOutlet UITextField *slugTextField;
 - (IBAction)joinTeam:(id)sender;
+
+@property (nonatomic) float screenHeight;
 
 @end

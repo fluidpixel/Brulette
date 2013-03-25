@@ -12,6 +12,7 @@
 @protocol bruletteDataDelegate <NSObject>
 
 -(void)returnTeamMembersWithTeamId:(NSArray*)teamMemberArray;
+-(void)returnMemberId:(int)membershipId;
 
 @end
 
@@ -21,7 +22,7 @@
 	UITableView *teamTableView;
 	NSString *auth_token;
 
-	id<bruletteDataDelegate> delegate;
+	//id<bruletteDataDelegate> delegate;
 }
 
 @property (nonatomic, assign) id delegate;
@@ -29,7 +30,6 @@
 
 @property(retain)UITableView *teamTableView;
 
--(void)setAuthentificationToken;
 -(void)registerUser;
 -(void)loginUser;
 -(void)deleteUser;
@@ -39,8 +39,12 @@
 -(void)deleteTeamWithId:(NSString *)teamId;
 -(void)joinTeamWithSlug:(NSString *)slug;
 -(void)joinTeamWithId:(int)teamId password:(NSString*)password;
+
 -(void)leaveTeamWithMembershipId:(NSString*)membershipId;
+
 -(void)getTeamBySlug:(NSString *)slug;
+
+-(void)updateTeamMembershipWithId:(NSString *)membershipId active:(NSString*)active;
 
 -(void)startRoundWithTeamId:(NSString *)teamId;
 

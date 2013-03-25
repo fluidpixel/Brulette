@@ -26,6 +26,9 @@
 {
     [super viewDidLoad];
 
+	//[self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
+	//[self.navigationController.navigationBar setTranslucent:YES];
+	
 	// Do any additional setup after loading the view, typically from a nib.
 
 	self.bruletteLogin = [[bruletteLogin alloc] init];
@@ -57,6 +60,10 @@
 		
 	}
 	
+	[self.slugTextField setDelegate:self];
+	
+	self.screenHeight = self.view.frame.size.height;
+	
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -79,6 +86,7 @@
 {
 	bruletteTeamCell *selectedCell = (bruletteTeamCell*) [tableView cellForRowAtIndexPath:indexPath];
 	
+	[self.slugTextField resignFirstResponder];
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
 	NSLog(@"selected cell: %@", selectedCell.teamName.text);
@@ -94,6 +102,50 @@
 	}
 }
 
+#pragma mark text view responders
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+
+	[UIView animateWithDuration:0.3f animations:^ {
+		//[self.view setNeedsUpdateConstraints];
+		//[self.view layoutIfNeeded];
+        self.view.frame = CGRectMake(0, -220, self.view.frame.size.width, self.view.frame.size.height);
+		//self.view.frame = CGRectMake(0, -120, 320, 480);
+    }];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+	
+    // Animate the current view back to its original position
+    [UIView animateWithDuration:0.3f animations:^ {
+		//[self.view setNeedsUpdateConstraints];
+		//[self.view layoutIfNeeded];
+        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    }];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	
+	[textField resignFirstResponder];
+	return YES;
+}
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+	NSLog(@"keyboardsize: %f", kbSize.height);
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch * touch = [touches anyObject];
+    if(touch.phase == UITouchPhaseBegan) {
+        [self.slugTextField resignFirstResponder];
+    }
+}
+
+#pragma mark Button Actions
 - (IBAction)joinTeam:(id)sender
 {
 	[self.bruletteLogin joinTeamWithSlug:self.slugTextField.text];

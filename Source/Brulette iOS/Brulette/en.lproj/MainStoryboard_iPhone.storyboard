@@ -66,9 +66,10 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="PD6MHZdb" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Bx-ED-ViU">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="h4Wo8U7V" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Bx-ED-ViU">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="121" id="Nqv-FR-uNI"/>
+                                    <constraint firstAttribute="height" constant="30" id="VxE-IF-AKe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -95,6 +96,7 @@
                             <constraint firstItem="3Bx-ED-ViU" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="9kC-Tt-rfO"/>
                             <constraint firstItem="3Bx-ED-ViU" firstAttribute="baseline" secondItem="zNJ-Wf-CkJ" secondAttribute="baseline" type="default" id="Bh5-RR-Pzj"/>
                             <constraint firstAttribute="bottom" secondItem="zNJ-Wf-CkJ" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="LBS-jR-zJd"/>
+                            <constraint firstAttribute="bottom" secondItem="3Bx-ED-ViU" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="XnV-lF-JuD"/>
                             <constraint firstItem="Tsn-RV-1ih" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="fQp-pg-t65"/>
                             <constraint firstItem="74l-p4-pzk" firstAttribute="top" secondItem="3" secondAttribute="top" constant="49" id="fSs-uT-k2H"/>
                             <constraint firstItem="74l-p4-pzk" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="ici-Ar-Imy"/>
@@ -116,7 +118,9 @@
         <scene sceneID="iX6-Wx-KYJ">
             <objects>
                 <navigationController definesPresentationContext="YES" id="oP2-eI-Hc8" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nDT-29-5mb">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="nDT-29-5mb">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -187,11 +191,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="grd-dO-sco">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="memberCell" id="y6K-6U-Ckx" customClass="bruletteMemberCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="memberCell" id="y6K-6U-Ckx" customClass="bruletteMemberCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Team Member" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pg-pf-kMf">
@@ -242,6 +246,7 @@
                     <connections>
                         <outlet property="deleteTeamButton" destination="FeM-rY-0pv" id="It8-aS-J9a"/>
                         <outlet property="leaveTeamButton" destination="JJ3-aY-95e" id="XG3-DQ-U7r"/>
+                        <outlet property="memberTable" destination="grd-dO-sco" id="b6N-TD-Oqp"/>
                         <outlet property="teamNameLabel" destination="84V-QC-Dwj" id="kaz-39-AcD"/>
                         <segue destination="2" kind="push" identifier="returnSegue" id="ViB-n3-4e1"/>
                     </connections>
@@ -257,6 +262,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ViB-n3-4e1"/>
+        <segue reference="xog-Gy-BSm"/>
     </inferredMetricsTieBreakers>
 </document>
