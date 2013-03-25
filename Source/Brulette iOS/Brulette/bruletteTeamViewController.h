@@ -15,6 +15,7 @@
 	NSMutableArray* teamMembers;
 	int membership_id;
 	bruletteLogin* bruletteDataClass;
+	int currentRound;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *teamNameLabel;
@@ -23,10 +24,13 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *memberTable;
 
+- (IBAction)joinRoundAction:(id)sender;
 - (IBAction)startRoundAction:(id)sender;
 - (IBAction)leaveTeamAction:(id)sender;
 - (IBAction)deleteTeamAction:(id)sender;
 
+
+@property (weak, nonatomic) IBOutlet UIButton *joinRoundButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *leaveTeamButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteTeamButton;

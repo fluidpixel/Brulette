@@ -17,6 +17,8 @@
 #define membershipURL [NSURL URLWithString:@"https://salty-plains-8447.herokuapp.com/api/memberships"]
 #define roundsURL [NSURL URLWithString:@"https://salty-plains-8447.herokuapp.com/api/rounds"]
 
+#define brewUrl [NSURL URLWithString:@"https://salty-plains-8447.herokuapp.com/api/brews"]
+
 @implementation bruletteLogin
 @synthesize teamTableView;
 //@synthesize delegate;
@@ -30,6 +32,7 @@
     return self;
 }
 
+#pragma mark Delegate Calls
 -(void)returnTeamMembersWithTeamId:(NSArray*)teamMemberArray
 {
 	if([self delegate] != nil)
@@ -42,6 +45,20 @@
 		[[self delegate] returnMemberId:membershipId];
 }
 
+-(void)returnTeams:(NSArray *)teamArray
+{
+	if([self delegate] != nil)
+		[[self delegate] returnTeamMembersWithTeamId:teamArray];
+
+}
+
+-(void)returnRound:(NSDictionary *)round
+{
+	if([self delegate] != nil)
+		[[self delegate] returnRound:round];
+}
+
+#pragma mark requests
 -(void)processRequest:(NSString *)postBody HTTPMethod:(NSString *)HTTPMethod selector:(NSString*)selector url:(NSURL*)url
 {
 	NSData *postData = [postBody dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
@@ -266,7 +283,27 @@
 	[self processRequest:postBody HTTPMethod:@"POST" selector:@"processStartRound:" url:roundsURL];
 }
 
+-(void)newBrewWithBrew:(bruletteBrew *)brew
+{
+	//curl https://localhost:3000/api/brews --data "auth_token=MjpgZsA5npo1s3tsq6jn&round_id=12&brew[drink]=Coffee&brew[method]=No preference&brew[milk]=Skimmed&brew[name]=jBrew&brew[size]=S&brew[sugars]=1&brew[sweeteners]=1&brew[time]=100"
 
+	NSString *brewString = @"round_id=12&brew[drink]=Coffee&brew[method]=No preference&brew[milk]=Skimmed&brew[name]=jBrew&brew[size]=S&brew[sugars]=1&brew[sweeteners]=1&brew[time]=100";
+	
+	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@&%@", auth_token, brewString];
+	
+	[self processRequest:postBody HTTPMethod:@"POST" selector:@"processNewBrew:" url:brewUrl];
+}
+
+-(void)newBrewWithRound:(int)round
+{
+	//curl https://localhost:3000/api/brews --data "auth_token=MjpgZsA5npo1s3tsq6jn&round_id=12&brew[drink]=Coffee&brew[method]=No preference&brew[milk]=Skimmed&brew[name]=jBrew&brew[size]=S&brew[sugars]=1&brew[sweeteners]=1&brew[time]=100"
+	
+	NSString *brewString = [NSString stringWithFormat:@"round_id=%i%@", round,  @"&brew[drink]=Coffee&brew[method]=No preference&brew[milk]=Skimmed&brew[name]=jBrew&brew[size]=S&brew[sugars]=1&brew[sweeteners]=1&brew[time]=100"];
+	
+	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@&%@", auth_token, brewString];
+	
+	[self processRequest:postBody HTTPMethod:@"POST" selector:@"processNewBrew:" url:brewUrl];
+}
 
 #pragma mark Process Responses
 -(void)processUser:(NSDictionary*)response
@@ -309,17 +346,10 @@
 	for(int i = 0; i < [teamArray count]; i++)
 	{
 		NSDictionary* teamDict = [teamArray objectAtIndex:i];
-		[items addObject:[bruletteTeam toDoItemWithName:teamDict]];
+		[items addObject:[bruletteTeam bruletteTeamWithName:teamDict]];
 	}
 	
-	//reload the table in main view with data
-	[teamTableView reloadData];
-
-}
-
--(NSArray*)returnTeams
-{
-	return items;
+	[self returnTeams:items];
 }
 
 -(bruletteTeam*)returnTeam:(int)teamID
@@ -335,7 +365,7 @@
 	//NSArray *teamArray = [response objectForKey:@"entry"];
 
 	NSDictionary* teamDict = [response objectForKey:@"entry"];
-	[items addObject:[bruletteTeam toDoItemWithName:teamDict]];
+	[items addObject:[bruletteTeam bruletteTeamWithName:teamDict]];
 
 	[teamTableView reloadData];
 }
@@ -392,62 +422,13 @@
 -(void)processStartRound:(NSDictionary *)response
 {
 	NSLog(@"round started");
+	NSDictionary* round = [response objectForKey:@"entry"];
+	[self returnRound:round];
 }
 
-#warning these shouldn't be here. Move to view controller
-#pragma mark - UITableViewDataSource protocol methods
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return items.count + 1;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)processNewBrew:(NSDictionary *)response
 {
-	
-    NSString *ident = @"bruletteTeamCell";
-    // re-use or create a cell
-    bruletteTeamCell *cell = [tableView dequeueReusableCellWithIdentifier:ident forIndexPath:indexPath];
-    // find the to-do item for this index
-    int index = [indexPath row];
-    
-	if (index < items.count)
-	{
-		bruletteTeam *item = items[index];
-		
-		// set the text
-		cell.teamName.text = item.name;
-		cell.teamSlug.text = item.slug;
-		[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-	}
-	else
-	{
-		cell.teamName.text = @"New Team";
-		cell.teamSlug.text = @"";
-		[cell setAccessoryType:UITableViewCellAccessoryNone];
-	}
-	
-    return cell;
-}
-
-#pragma mark Deleting of Teams
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return YES if you want the specified item to be editable.
-    return YES;
-}
-
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	bruletteTeam *item = items[[indexPath row]];
-	
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //add code here for when you hit delete
-		NSLog(@"delete id: %@", item.teamId);
-		
-		[self deleteTeamWithId:item.teamId];
-		
-    }
+	NSLog(@"brew Added");
 }
 
 @end

@@ -61,6 +61,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your Teams" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tsn-RV-1ih">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="161" id="1wN-ja-iW3"/>
+                                    <constraint firstAttribute="height" constant="21" id="zIu-N7-vsZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -69,7 +70,6 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="h4Wo8U7V" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Bx-ED-ViU">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="121" id="Nqv-FR-uNI"/>
-                                    <constraint firstAttribute="height" constant="30" id="VxE-IF-AKe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -87,19 +87,33 @@
                                     <action selector="joinTeam:" destination="2" eventType="touchUpInside" id="E8a-B8-1MV"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfy-sy-1TY">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="NEW BREW">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="newBrew:" destination="2" eventType="touchUpInside" id="bxV-Db-o3X"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Tsn-RV-1ih" firstAttribute="centerX" secondItem="74l-p4-pzk" secondAttribute="centerX" type="default" id="1pJ-k7-erg"/>
+                            <constraint firstItem="qfy-sy-1TY" firstAttribute="leading" secondItem="zNJ-Wf-CkJ" secondAttribute="leading" type="default" id="3NU-8C-4Qv"/>
                             <constraint firstAttribute="trailing" secondItem="zNJ-Wf-CkJ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="3nW-if-bnp"/>
                             <constraint firstItem="74l-p4-pzk" firstAttribute="top" secondItem="Tsn-RV-1ih" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="4t5-ia-9YJ"/>
                             <constraint firstItem="3Bx-ED-ViU" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="9kC-Tt-rfO"/>
                             <constraint firstItem="3Bx-ED-ViU" firstAttribute="baseline" secondItem="zNJ-Wf-CkJ" secondAttribute="baseline" type="default" id="Bh5-RR-Pzj"/>
                             <constraint firstAttribute="bottom" secondItem="zNJ-Wf-CkJ" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="LBS-jR-zJd"/>
-                            <constraint firstAttribute="bottom" secondItem="3Bx-ED-ViU" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="XnV-lF-JuD"/>
+                            <constraint firstAttribute="trailing" secondItem="qfy-sy-1TY" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="cyk-hL-rB0"/>
                             <constraint firstItem="Tsn-RV-1ih" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="fQp-pg-t65"/>
-                            <constraint firstItem="74l-p4-pzk" firstAttribute="top" secondItem="3" secondAttribute="top" constant="49" id="fSs-uT-k2H"/>
                             <constraint firstItem="74l-p4-pzk" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="ici-Ar-Imy"/>
+                            <constraint firstItem="zNJ-Wf-CkJ" firstAttribute="top" secondItem="qfy-sy-1TY" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="lB0-ue-uEd"/>
                             <constraint firstItem="74l-p4-pzk" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="yH1-NL-ICD"/>
                         </constraints>
                     </view>
@@ -174,7 +188,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DwC-BC-fl2">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="275" id="d5P-V2-Qy0"/>
+                                    <constraint firstAttribute="width" constant="130" id="b50-a7-hpK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Start Round">
@@ -186,6 +200,22 @@
                                 </state>
                                 <connections>
                                     <action selector="startRoundAction:" destination="XcJ-dC-OJv" eventType="touchUpInside" id="Tro-p1-ygE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7G-ex-J7m">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="Ep1-R1-4mf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Join Round">
+                                    <color key="titleColor" red="0.32156863810000003" green="0.66274511810000003" blue="0.3058823645" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="joinRoundAction:" destination="XcJ-dC-OJv" eventType="touchUpInside" id="Kgd-rt-Cuc"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="grd-dO-sco">
@@ -231,13 +261,14 @@
                             <constraint firstItem="FeM-rY-0pv" firstAttribute="leading" secondItem="PtJ-Su-Ueb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Aal-hL-5c4"/>
                             <constraint firstAttribute="bottom" secondItem="JJ3-aY-95e" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="CML-Td-oqk"/>
                             <constraint firstItem="84V-QC-Dwj" firstAttribute="top" secondItem="PtJ-Su-Ueb" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Cgk-Nn-cXh"/>
-                            <constraint firstItem="84V-QC-Dwj" firstAttribute="trailing" secondItem="DwC-BC-fl2" secondAttribute="trailing" type="default" id="DOb-8O-2n4"/>
+                            <constraint firstItem="G7G-ex-J7m" firstAttribute="baseline" secondItem="DwC-BC-fl2" secondAttribute="baseline" type="default" id="JV0-Sh-thJ"/>
                             <constraint firstAttribute="bottom" secondItem="FeM-rY-0pv" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="SWz-xd-SWg"/>
                             <constraint firstItem="grd-dO-sco" firstAttribute="leading" secondItem="PtJ-Su-Ueb" secondAttribute="leading" type="default" id="VdW-2F-EVr"/>
+                            <constraint firstItem="G7G-ex-J7m" firstAttribute="trailing" secondItem="84V-QC-Dwj" secondAttribute="trailing" type="default" id="Wvf-eA-xzd"/>
                             <constraint firstAttribute="trailing" secondItem="JJ3-aY-95e" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="XJz-17-acA"/>
                             <constraint firstItem="DwC-BC-fl2" firstAttribute="leading" secondItem="PtJ-Su-Ueb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Xd8-OC-306"/>
+                            <constraint firstItem="84V-QC-Dwj" firstAttribute="leading" secondItem="PtJ-Su-Ueb" secondAttribute="leading" constant="15" id="Zuu-st-BZN"/>
                             <constraint firstItem="FeM-rY-0pv" firstAttribute="top" secondItem="DwC-BC-fl2" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="t2M-KZ-jln"/>
-                            <constraint firstItem="FeM-rY-0pv" firstAttribute="baseline" secondItem="JJ3-aY-95e" secondAttribute="baseline" type="default" id="uOA-ZR-AOJ"/>
                             <constraint firstItem="DwC-BC-fl2" firstAttribute="top" secondItem="grd-dO-sco" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ufA-m6-RUZ"/>
                         </constraints>
                     </view>
@@ -245,6 +276,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="deleteTeamButton" destination="FeM-rY-0pv" id="It8-aS-J9a"/>
+                        <outlet property="joinRoundButton" destination="G7G-ex-J7m" id="UE2-Fg-KHx"/>
                         <outlet property="leaveTeamButton" destination="JJ3-aY-95e" id="XG3-DQ-U7r"/>
                         <outlet property="memberTable" destination="grd-dO-sco" id="b6N-TD-Oqp"/>
                         <outlet property="teamNameLabel" destination="84V-QC-Dwj" id="kaz-39-AcD"/>
@@ -262,6 +294,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="xog-Gy-BSm"/>
+        <segue reference="ViB-n3-4e1"/>
     </inferredMetricsTieBreakers>
 </document>

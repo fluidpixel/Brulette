@@ -24,6 +24,6 @@
 -(id)initWithName:(NSDictionary*)name;
 
 // Returns an SHCToDoItem item initialized with the given text.
-+(id)toDoItemWithName:(NSDictionary*)name;
++(id)bruletteTeamWithName:(NSDictionary*)name;
 
 @end

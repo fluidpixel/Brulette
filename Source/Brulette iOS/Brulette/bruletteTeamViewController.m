@@ -54,6 +54,10 @@
 	membership_id = membershipId;
 }
 
+-(void)returnRound:(NSDictionary*)round
+{
+	currentRound = [[round objectForKey:@"id"] intValue];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -73,6 +77,11 @@
 	[bruletteDataClass deleteTeamWithId:self.bruletteTeam.teamId];
 	
 	//[self performSegueWithIdentifier:@"returnSegue" sender:self];
+}
+
+- (IBAction)joinRoundAction:(id)sender
+{
+	[bruletteDataClass newBrewWithRound:currentRound];
 }
 
 - (IBAction)startRoundAction:(id)sender

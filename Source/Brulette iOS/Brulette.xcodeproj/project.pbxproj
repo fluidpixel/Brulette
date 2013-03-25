@@ -47,6 +47,7 @@
 		5481446D16FCBF2E0036E837 /* bruletteLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5481446C16FCBF2E0036E837 /* bruletteLogin.m */; };
 		54A1373C17006BF40050116D /* bruletteLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A1373B17006BF40050116D /* bruletteLocationManager.m */; };
 		54A13740170078970050116D /* bruletteMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A1373F170078970050116D /* bruletteMemberCell.m */; };
+		54A137431700C51C0050116D /* bruletteBrew.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A137421700C51C0050116D /* bruletteBrew.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,8 @@
 		54A1373B17006BF40050116D /* bruletteLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bruletteLocationManager.m; sourceTree = "<group>"; };
 		54A1373E170078970050116D /* bruletteMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bruletteMemberCell.h; sourceTree = "<group>"; };
 		54A1373F170078970050116D /* bruletteMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bruletteMemberCell.m; sourceTree = "<group>"; };
+		54A137411700C51C0050116D /* bruletteBrew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bruletteBrew.h; sourceTree = "<group>"; };
+		54A137421700C51C0050116D /* bruletteBrew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bruletteBrew.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,10 +234,12 @@
 		5481446A16FCBF070036E837 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				545799EC16FE0125000F0E9A /* bruletteTeam.h */,
-				545799ED16FE0125000F0E9A /* bruletteTeam.m */,
 				5481446B16FCBF2E0036E837 /* bruletteLogin.h */,
 				5481446C16FCBF2E0036E837 /* bruletteLogin.m */,
+				545799EC16FE0125000F0E9A /* bruletteTeam.h */,
+				545799ED16FE0125000F0E9A /* bruletteTeam.m */,
+				54A137411700C51C0050116D /* bruletteBrew.h */,
+				54A137421700C51C0050116D /* bruletteBrew.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				546BF38816FF4F4F00E2AB86 /* bruletteTeamViewController.m in Sources */,
 				54A1373C17006BF40050116D /* bruletteLocationManager.m in Sources */,
 				54A13740170078970050116D /* bruletteMemberCell.m in Sources */,
+				54A137431700C51C0050116D /* bruletteBrew.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

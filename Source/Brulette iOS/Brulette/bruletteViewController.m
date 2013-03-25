@@ -26,17 +26,16 @@
 {
     [super viewDidLoad];
 
+	bruletteDataClass = [[bruletteLogin alloc] init];
+	
+	[bruletteDataClass setDelegate:self];
+	
 	//[self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
 	//[self.navigationController.navigationBar setTranslucent:YES];
 	
 	// Do any additional setup after loading the view, typically from a nib.
-
-	self.bruletteLogin = [[bruletteLogin alloc] init];
-
-	[self.bruletteLogin setTeamTableView:self.teamTableView];
-
-	[self.teamTableView setDataSource:self.bruletteLogin];
-	//[self.teamTableView setDelegate:self.bruletteLogin];
+	
+	[self.teamTableView setDataSource:self];
 	[self.teamTableView setDelegate:self];
 	
     //self.teamTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -45,18 +44,18 @@
 	
 	if (!auth_token)
 	{
-		[self.bruletteLogin registerUser];
-		//[self.bruletteLogin deleteUser];
+		[bruletteDataClass registerUser];
+		//[bruletteDataClass deleteUser];
 	}
 	else
 	{
 		NSLog(@"auth_token: %@", auth_token);
 		
 		//on launch set the auth_token to be reused throughout
-		//[self.bruletteLogin setAuthentificationToken];
+		//[bruletteDataClass setAuthentificationToken];
 		
 		//populate the team table
-		[self.bruletteLogin getTeams];
+		[bruletteDataClass getTeams];
 		
 	}
 	
@@ -92,11 +91,11 @@
 	NSLog(@"selected cell: %@", selectedCell.teamName.text);
 	if ([selectedCell.teamName.text isEqualToString:@"New Team"])
 	{
-		[self.bruletteLogin addTeam];
+		[bruletteDataClass addTeam];
 	}
 	else
 	{
-		teamDict = [self.bruletteLogin returnTeam:indexPath.row];
+		teamDict = [bruletteDataClass returnTeam:indexPath.row];
 		[self performSegueWithIdentifier:@"teamPush" sender:teamDict];
 
 	}
@@ -148,25 +147,75 @@
 #pragma mark Button Actions
 - (IBAction)joinTeam:(id)sender
 {
-	[self.bruletteLogin joinTeamWithSlug:self.slugTextField.text];
+	[bruletteDataClass joinTeamWithSlug:self.slugTextField.text];
 }
 
-/*
--(UIColor*)colorForIndex:(NSInteger) index {
-    NSUInteger itemCount = _toDoItems.count - 1;
-    float val = ((float)index / (float)itemCount) * 0.2;
-    return [UIColor colorWithRed: 0.2 green:val blue: 0.2 alpha:1.0];
+- (IBAction)newBrew:(id)sender {
 }
 
-#pragma mark - UITableViewDataDelegate protocol methods
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 64.0f;
+-(void)returnTeamMembersWithTeamId:(NSArray*)teamArray;
+{
+	items = [[NSMutableArray alloc] init];
+	items = [NSMutableArray arrayWithArray:teamArray];
+	
+	[self.teamTableView reloadData];
+	
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.backgroundColor = [self colorForIndex:indexPath.row];
-}
-*/
+#pragma mark - UITableViewDataSource protocol methods
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return items.count + 1;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	
+    NSString *ident = @"bruletteTeamCell";
+    // re-use or create a cell
+    bruletteTeamCell *cell = [tableView dequeueReusableCellWithIdentifier:ident forIndexPath:indexPath];
+    // find the to-do item for this index
+    int index = [indexPath row];
+    
+	if (index < items.count)
+	{
+		bruletteTeam *item = items[index];
+		
+		// set the text
+		cell.teamName.text = item.name;
+		cell.teamSlug.text = item.slug;
+		[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+	}
+	else
+	{
+		cell.teamName.text = @"New Team";
+		cell.teamSlug.text = @"";
+		[cell setAccessoryType:UITableViewCellAccessoryNone];
+	}
+	
+    return cell;
+}
+
+
+#pragma mark Deleting of Teams
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	bruletteTeam *item = items[[indexPath row]];
+	
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //add code here for when you hit delete
+		NSLog(@"delete id: %@", item.teamId);
+		
+		[bruletteDataClass deleteTeamWithId:item.teamId];
+		
+    }
+}
 
 @end

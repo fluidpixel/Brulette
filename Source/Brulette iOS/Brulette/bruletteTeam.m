@@ -20,7 +20,7 @@
     return self;
 }
 
-+(id)toDoItemWithName:(NSDictionary *)team {
++(id)bruletteTeamWithName:(NSDictionary *)team {
     return [[bruletteTeam alloc] initWithName:team];
 }
 
