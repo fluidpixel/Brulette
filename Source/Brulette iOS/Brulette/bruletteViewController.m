@@ -75,6 +75,7 @@
 		bruletteTeamViewController.bruletteTeam = teamDict;
 	}
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

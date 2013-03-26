@@ -16,6 +16,7 @@
 -(void)returnMemberId:(int)membershipId;
 -(void)returnTeams:(NSArray*)teamArray;
 -(void)returnRound:(NSDictionary*)round;
+-(void)returnBrews:(NSArray*)brewArray;
 
 @end
 
@@ -32,6 +33,8 @@
 @property (nonatomic, assign) id delegate;
 -(void)returnTeamMembersWithTeamId:(NSArray*)teamMemberArray;
 -(void)returnMemberId:(int)membershipId;
+-(void)returnRound:(NSDictionary *)round;
+-(void)returnBrews:(NSArray *)brews;
 
 @property(retain)UITableView *teamTableView;
 
@@ -53,6 +56,7 @@
 
 -(void)startRoundWithTeamId:(NSString *)teamId;
 
+-(void)getUsersBrews:(NSString *)brewType;
 -(void)newBrewWithBrew:(BruletteBrew *)brew;
 -(void)newBrewWithRound:(int)round;
 

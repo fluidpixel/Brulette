@@ -64,6 +64,8 @@
 		NSString *message = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
 		UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Want a Brew?" message:message delegate:self cancelButtonTitle: @"OK" otherButtonTitles:nil];
 			[alert show];
+		
+		NSLog(@"full alert: %@", userInfo);
 	}
 	else
 	{

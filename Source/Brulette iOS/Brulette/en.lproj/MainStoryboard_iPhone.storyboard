@@ -100,7 +100,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="fHM-4s-n6u" kind="push" id="PY6-nb-2KG"/>
+                                    <segue destination="fHM-4s-n6u" kind="push" identifier="yourBrewPush" id="PY6-nb-2KG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -229,11 +229,141 @@
                     <navigationItem key="navigationItem" id="kLb-fG-Wue"/>
                     <connections>
                         <outlet property="brewTable" destination="O6j-v8-WDl" id="RRn-DV-ku6"/>
+                        <segue destination="XNu-ZC-T7L" kind="push" identifier="newBrewSegue" id="kF0-qt-RSG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="al5-4S-I8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="842" y="-357"/>
+        </scene>
+        <!--Brulette New Brew View Controller-->
+        <scene sceneID="Svt-ci-s78">
+            <objects>
+                <viewController id="XNu-ZC-T7L" customClass="bruletteNewBrewViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rq5-sI-7Sy">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Drink" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lfu-Qf-tCS">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Method" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rcB-Fh-fSs">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Milk" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kMa-bS-0Po">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4F-LU-rlE">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Size" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aOf-iA-IE3">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ly9-xm-MOC">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sugars" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="78F-WB-0ha">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sweeteners" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EdF-s2-Sa1">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Time" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AUO-aH-OWE">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdF-ze-TP9">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="SAVE">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonAction:" destination="XNu-ZC-T7L" eventType="touchUpInside" id="nlR-FL-MhJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dku-1y-2kW">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="XNu-ZC-T7L" eventType="touchUpInside" id="r5Q-fL-OFb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ly9-xm-MOC" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="02c-ux-gv3"/>
+                            <constraint firstItem="rcB-Fh-fSs" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="7fi-eD-wZn"/>
+                            <constraint firstItem="aOf-iA-IE3" firstAttribute="top" secondItem="kMa-bS-0Po" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="8fb-Xt-yn7"/>
+                            <constraint firstItem="rcB-Fh-fSs" firstAttribute="top" secondItem="lfu-Qf-tCS" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="A5S-u4-IQG"/>
+                            <constraint firstItem="Dku-1y-2kW" firstAttribute="leading" secondItem="I4F-LU-rlE" secondAttribute="leading" type="default" id="C1w-Jj-4Rt"/>
+                            <constraint firstItem="QdF-ze-TP9" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Evt-p1-Aeu"/>
+                            <constraint firstItem="ly9-xm-MOC" firstAttribute="top" secondItem="rq5-sI-7Sy" secondAttribute="top" constant="58" id="JDE-XY-tdO"/>
+                            <constraint firstItem="QdF-ze-TP9" firstAttribute="top" secondItem="AUO-aH-OWE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Kzj-Cl-4ag"/>
+                            <constraint firstAttribute="trailing" secondItem="78F-WB-0ha" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="MME-Fz-SB0"/>
+                            <constraint firstItem="lfu-Qf-tCS" firstAttribute="top" secondItem="ly9-xm-MOC" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Nf6-yy-z7f"/>
+                            <constraint firstItem="EdF-s2-Sa1" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="O2P-sz-EQw"/>
+                            <constraint firstItem="AUO-aH-OWE" firstAttribute="top" secondItem="EdF-s2-Sa1" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Pt9-ZC-EsF"/>
+                            <constraint firstAttribute="trailing" secondItem="lfu-Qf-tCS" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="XCO-lv-lrO"/>
+                            <constraint firstItem="I4F-LU-rlE" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="11" id="YAD-CC-Uve"/>
+                            <constraint firstItem="aOf-iA-IE3" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="YEN-Xp-YRA"/>
+                            <constraint firstItem="kMa-bS-0Po" firstAttribute="top" secondItem="rcB-Fh-fSs" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="aHg-Og-asm"/>
+                            <constraint firstItem="lfu-Qf-tCS" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="apn-qD-l60"/>
+                            <constraint firstItem="kMa-bS-0Po" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bIu-dT-ADx"/>
+                            <constraint firstItem="EdF-s2-Sa1" firstAttribute="top" secondItem="78F-WB-0ha" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="eDC-bq-Vxd"/>
+                            <constraint firstItem="ly9-xm-MOC" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="fcL-tf-meC"/>
+                            <constraint firstAttribute="trailing" secondItem="AUO-aH-OWE" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="gnb-os-Wx3"/>
+                            <constraint firstAttribute="trailing" secondItem="kMa-bS-0Po" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="hKE-si-FE5"/>
+                            <constraint firstItem="I4F-LU-rlE" firstAttribute="top" secondItem="rq5-sI-7Sy" secondAttribute="top" constant="-1" id="hRe-YR-zGc"/>
+                            <constraint firstItem="Dku-1y-2kW" firstAttribute="baseline" secondItem="I4F-LU-rlE" secondAttribute="baseline" type="default" id="hZn-oO-2HW"/>
+                            <constraint firstItem="78F-WB-0ha" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="htj-5L-Mql"/>
+                            <constraint firstAttribute="trailing" secondItem="aOf-iA-IE3" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="jXu-Fm-5lg"/>
+                            <constraint firstItem="78F-WB-0ha" firstAttribute="top" secondItem="aOf-iA-IE3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="kgm-0T-hZ1"/>
+                            <constraint firstAttribute="trailing" secondItem="rcB-Fh-fSs" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="n74-ei-0B1"/>
+                            <constraint firstItem="Dku-1y-2kW" firstAttribute="top" secondItem="I4F-LU-rlE" secondAttribute="top" type="default" id="ncv-bq-YBF"/>
+                            <constraint firstAttribute="trailing" secondItem="QdF-ze-TP9" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="qeM-cl-aGE"/>
+                            <constraint firstItem="AUO-aH-OWE" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="sd3-X0-aMt"/>
+                            <constraint firstAttribute="trailing" secondItem="EdF-s2-Sa1" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="vd5-sF-FgO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6RO-T6-0gH"/>
+                    <connections>
+                        <outlet property="drinkField" destination="lfu-Qf-tCS" id="Jcc-0r-j2H"/>
+                        <outlet property="methodField" destination="rcB-Fh-fSs" id="34m-il-kUC"/>
+                        <outlet property="milkField" destination="kMa-bS-0Po" id="fBH-AN-JPx"/>
+                        <outlet property="nameField" destination="ly9-xm-MOC" id="Vc5-f9-h3T"/>
+                        <outlet property="sizeField" destination="aOf-iA-IE3" id="51i-Ih-pDa"/>
+                        <outlet property="sugarsField" destination="78F-WB-0ha" id="rfA-UW-4HF"/>
+                        <outlet property="sweetenersField" destination="EdF-s2-Sa1" id="kq5-4F-e4v"/>
+                        <outlet property="timeField" destination="AUO-aH-OWE" id="7UO-qi-XAZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m6m-aJ-m0u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1368" y="-357"/>
         </scene>
         <!--Brulette Team View Controller-->
         <scene sceneID="KHL-Hz-HNR">
@@ -393,6 +523,76 @@
             <point key="canvasLocation" x="842" y="326"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="bruletteBrewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteBrewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="brewNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="bruletteBrewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteBrewViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backButtonAction:"/>
+                <relationship kind="outlet" name="brewTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="bruletteMemberCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteMemberCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="teamMemberLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="bruletteNewBrewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteNewBrewViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backButtonAction:"/>
+                <relationship kind="action" name="saveButtonAction:"/>
+                <relationship kind="outlet" name="drinkField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="methodField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="milkField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="sizeField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="sugarsField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="sweetenersField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="timeField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="bruletteTeamCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteTeamCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="teamName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="teamSlug" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="bruletteTeamViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteTeamViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backAction:"/>
+                <relationship kind="action" name="deleteTeamAction:"/>
+                <relationship kind="action" name="joinRoundAction:"/>
+                <relationship kind="action" name="leaveTeamAction:"/>
+                <relationship kind="action" name="startRoundAction:"/>
+                <relationship kind="outlet" name="deleteTeamButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="joinRoundButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leaveTeamButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="memberTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="teamNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="bruletteViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="joinTeam:"/>
+                <relationship kind="action" name="newBrew:"/>
+                <relationship kind="outlet" name="slugTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="teamTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

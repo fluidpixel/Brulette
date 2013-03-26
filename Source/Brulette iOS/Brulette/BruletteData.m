@@ -59,6 +59,14 @@
 		[[self delegate] returnRound:round];
 }
 
+-(void)returnBrews:(NSArray *)brewArray
+{
+	if([self delegate] != nil)
+		[[self delegate] returnBrews:brewArray];
+	
+}
+
+
 #pragma mark requests
 -(void)processRequest:(NSString *)postBody HTTPMethod:(NSString *)HTTPMethod selector:(NSString*)selector url:(NSURL*)url
 {
@@ -290,6 +298,14 @@
 	[self processRequest:postBody HTTPMethod:@"POST" selector:@"processStartRound:" url:roundsURL];
 }
 
+-(void)getUsersBrews:(NSString *)brewType
+{
+//	curl -X GET https://salty-plains-8447.herokuapp.com/api/brews --data "auth_token=MjpgZsA5npo1s3tsq6jn&drink=Coffee"
+	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@&drink=%@", auth_token, brewType];
+	
+	[self processRequest:postBody HTTPMethod:@"GET" selector:@"processGetUsersBrews:" url:brewUrl];
+}
+
 -(void)newBrewWithBrew:(BruletteBrew *)brew
 {
 	//curl https://localhost:3000/api/brews --data "auth_token=MjpgZsA5npo1s3tsq6jn&round_id=12&brew[drink]=Coffee&brew[method]=No preference&brew[milk]=Skimmed&brew[name]=jBrew&brew[size]=S&brew[sugars]=1&brew[sweeteners]=1&brew[time]=100"
@@ -428,6 +444,24 @@
 	NSLog(@"round started");
 	NSDictionary* round = [response objectForKey:@"entry"];
 	[self returnRound:round];
+}
+
+-(void)processGetUsersBrews:(NSDictionary *)response
+{
+	NSLog(@"process Get Brews");
+
+	NSMutableArray* brews = [[NSMutableArray alloc] init];
+
+	NSArray *responseArray = [response objectForKey:@"entries"];
+	
+	for(int i = 0; i < [responseArray count]; i++)
+	{
+		NSDictionary* brewDict = [responseArray objectAtIndex:i];
+		[brews addObject:[BruletteBrew bruletteBrewWithBrew:brewDict]];
+	}
+	
+	[self returnBrews:brews];
+
 }
 
 -(void)processNewBrew:(NSDictionary *)response

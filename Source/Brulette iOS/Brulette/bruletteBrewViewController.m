@@ -8,6 +8,7 @@
 
 #import "bruletteBrewViewController.h"
 #import "bruletteBrewCell.h"
+#import "bruletteNewBrewViewController.h"
 
 @interface bruletteBrewViewController ()
 
@@ -32,6 +33,8 @@
 	bruletteDataClass = [[BruletteData alloc] init];
 	
 	[bruletteDataClass setDelegate:self];
+	
+	[bruletteDataClass getUsersBrews:@"coffee"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,6 +43,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)selectedBrew
+{
+	
+    if ([[segue identifier] isEqualToString:@"newBrewSegue"])
+	{
+		bruletteNewBrewViewController *bruletteNewBrewViewController = [segue destinationViewController];
+		
+		bruletteNewBrewViewController.brew = selectedBrew;
+	}
+}
+
+-(void)returnBrews:(NSArray*)brewArray
+{
+	brews = [[NSMutableArray alloc] init];
+	brews = [NSMutableArray arrayWithArray:brewArray];
+	
+	[self.brewTable reloadData];
+}
+
+#pragma mark Button Actions
 - (IBAction)backButtonAction:(id)sender
 {
 	[self.navigationController popViewControllerAnimated:TRUE];
@@ -63,10 +86,10 @@
 	if (index < brews.count)
 	{
 		//bruletteTeam *item = teamMembers[index];
-		NSDictionary *member = brews[index];
+		BruletteBrew *brew = brews[index];
 		
 		// set the text
-		cell.brewNameLabel.text = [member objectForKey:@"name"];
+		cell.brewNameLabel.text = brew.name;
 
 		[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 		
@@ -89,9 +112,12 @@
 	int index = [indexPath row];
 	
 	BruletteBrew *brew = brews[index];
+	NSLog(@"brew: %@", brew.name);
 	
 	//goto new brew screen
-	NSLog(@"brew: %@", brew.name);
+	[self performSegueWithIdentifier:@"newBrewSegue" sender:brew];
+	
+	
 	
 }
 

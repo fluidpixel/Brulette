@@ -17,7 +17,7 @@
 }
 
 
-@property (nonatomic, strong) BruletteBrew* bruletteBrew;
+@property (nonatomic, strong) BruletteBrew* brew;
 
 - (IBAction)backButtonAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *brewTable;
