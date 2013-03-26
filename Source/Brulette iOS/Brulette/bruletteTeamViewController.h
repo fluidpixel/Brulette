@@ -24,6 +24,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *memberTable;
 
+- (IBAction)backAction:(id)sender;
+
 - (IBAction)joinRoundAction:(id)sender;
 - (IBAction)startRoundAction:(id)sender;
 - (IBAction)leaveTeamAction:(id)sender;

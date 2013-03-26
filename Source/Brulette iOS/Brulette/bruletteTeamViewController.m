@@ -79,6 +79,11 @@
 	//[self performSegueWithIdentifier:@"returnSegue" sender:self];
 }
 
+- (IBAction)backAction:(id)sender
+{
+	[self.navigationController popViewControllerAnimated:TRUE];
+}
+
 - (IBAction)joinRoundAction:(id)sender
 {
 	[bruletteDataClass newBrewWithRound:currentRound];

@@ -78,6 +78,8 @@
 		[request setValue:@"application/x-www-form-urlencoded;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
 
 	}
+	
+	NSLog(@"call: %@", selector);
 	NSLog(@"HTTPMethod: %@", HTTPMethod);
 	NSLog(@"url: %@", url);
 	NSLog(@"postData: %@", postBody);
@@ -197,8 +199,12 @@
 -(void)addTeam
 {
 	//	curl -X POST https://salty-plains-8447.herokuapp.com/api/teams --data "auth_token=MjpgZsA5npo1s3tsq6jn&team[name]=myTeam"
-		
-	NSString* teamName = @"Best Team 3";
+	
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"HH"];
+	int hour = [[dateFormatter stringFromDate:[NSDate date]] intValue];
+	
+	NSString* teamName = [NSString stringWithFormat:@"Best Team %i", hour];
 	CLLocation *userLocation = [bruletteLocationManager sharedSingleton].locationManager.location;
 	
 	NSString* locationString = @"";
@@ -366,8 +372,7 @@
 
 	NSDictionary* teamDict = [response objectForKey:@"entry"];
 	[items addObject:[bruletteTeam bruletteTeamWithName:teamDict]];
-
-	[teamTableView reloadData];
+	[self getTeams];
 }
 
 -(void)processDeleteTeam:(NSDictionary*)response
@@ -375,8 +380,6 @@
 	NSLog(@"Team deleted");
 
 	[self getTeams];
-
-	[teamTableView reloadData];
 }
 
 -(void)processGetTeamBySlug:(NSDictionary*)response
