@@ -1,14 +1,14 @@
 //
-//  bruletteBrew.m
+//  BruletteBrew.m
 //  Brulette
 //
 //  Created by Stuart Varrall on 25/03/2013.
 //  Copyright (c) 2013 Fluid Pixel Ltd. All rights reserved.
 //
 
-#import "bruletteBrew.h"
+#import "BruletteBrew.h"
 
-@implementation bruletteBrew
+@implementation BruletteBrew
 
 -(id)initWithBrew:(NSDictionary*)brew {
     if (self = [super init]) {
@@ -26,7 +26,7 @@
 
 +(id)bruletteBrewWithBrew:(NSDictionary *)brew
 {
-    return [[bruletteBrew alloc] initWithBrew:brew];
+    return [[BruletteBrew alloc] initWithBrew:brew];
 }
 
 @end

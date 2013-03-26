@@ -1,5 +1,5 @@
 //
-//  bruletteBrew.h
+//  BruletteBrew.h
 //  Brulette
 //
 //  Created by Stuart Varrall on 25/03/2013.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface bruletteBrew : NSObject
+@interface BruletteBrew : NSObject
 
 @property (nonatomic, copy) NSString *drink;
 @property (nonatomic, copy) NSString *method;

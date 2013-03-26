@@ -7,20 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "bruletteTeam.h"
-#import "bruletteLogin.h"
+#import "BruletteTeam.h"
+#import "BruletteData.h"
 
 @interface bruletteTeamViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
 	NSMutableArray* teamMembers;
 	int membership_id;
-	bruletteLogin* bruletteDataClass;
+	BruletteData* bruletteDataClass;
 	int currentRound;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *teamNameLabel;
 
-@property (nonatomic, strong) bruletteTeam *bruletteTeam;
+@property (nonatomic, strong) BruletteTeam *bruletteTeam;
 
 @property (weak, nonatomic) IBOutlet UITableView *memberTable;
 

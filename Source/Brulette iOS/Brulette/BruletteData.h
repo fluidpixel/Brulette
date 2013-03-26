@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "bruletteTeam.h"
+#import "BruletteTeam.h"
 #import "bruletteBrew.h"
 
 @protocol bruletteDataDelegate <NSObject>
@@ -19,7 +19,7 @@
 
 @end
 
-@interface bruletteLogin : NSObject
+@interface BruletteData : NSObject
 {
 	NSMutableArray *items;
 	UITableView *teamTableView;
@@ -53,10 +53,10 @@
 
 -(void)startRoundWithTeamId:(NSString *)teamId;
 
--(void)newBrewWithBrew:(bruletteBrew *)brew;
+-(void)newBrewWithBrew:(BruletteBrew *)brew;
 -(void)newBrewWithRound:(int)round;
 
--(bruletteTeam*)returnTeam:(int)teamId;
+-(BruletteTeam*)returnTeam:(int)teamId;
 
 -(void)processRequest:(NSString *)postBody HTTPMethod:(NSString *)HTTPMethod selector:(NSString*)selector url:(NSURL*)url;
 

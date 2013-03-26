@@ -7,7 +7,7 @@
 //
 
 #import "bruletteTeamViewController.h"
-#import "bruletteLogin.h"
+#import "BruletteData.h"
 #import "bruletteMemberCell.h"
 
 @interface bruletteTeamViewController ()
@@ -30,7 +30,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 	
-	bruletteDataClass = [[bruletteLogin alloc] init];
+	bruletteDataClass = [[BruletteData alloc] init];
 	
 	[bruletteDataClass setDelegate:self];
 	 

@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "bruletteLogin.h"
+#import "BruletteData.h"
 
 @interface bruletteViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,  UITextFieldDelegate>
 {
 	NSArray *items;
-	bruletteLogin* bruletteDataClass;
+	BruletteData* bruletteDataClass;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *teamTableView;

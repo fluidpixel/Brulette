@@ -6,10 +6,11 @@
 //  Copyright (c) 2013 Fluid Pixel Ltd. All rights reserved.
 //
 
-#import "bruletteLogin.h"
+#import "BruletteData.h"
 #import "bruletteTeamCell.h"
-#import "bruletteTeam.h"
+#import "BruletteTeam.h"
 #import "bruletteLocationManager.h"
+#import "BruletteBrew.h"
 
 #define BgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 #define usersURL [NSURL URLWithString:@"https://salty-plains-8447.herokuapp.com/api/users"]
@@ -19,7 +20,7 @@
 
 #define brewUrl [NSURL URLWithString:@"https://salty-plains-8447.herokuapp.com/api/brews"]
 
-@implementation bruletteLogin
+@implementation BruletteData
 @synthesize teamTableView;
 //@synthesize delegate;
 
@@ -289,7 +290,7 @@
 	[self processRequest:postBody HTTPMethod:@"POST" selector:@"processStartRound:" url:roundsURL];
 }
 
--(void)newBrewWithBrew:(bruletteBrew *)brew
+-(void)newBrewWithBrew:(BruletteBrew *)brew
 {
 	//curl https://localhost:3000/api/brews --data "auth_token=MjpgZsA5npo1s3tsq6jn&round_id=12&brew[drink]=Coffee&brew[method]=No preference&brew[milk]=Skimmed&brew[name]=jBrew&brew[size]=S&brew[sugars]=1&brew[sweeteners]=1&brew[time]=100"
 
@@ -352,13 +353,13 @@
 	for(int i = 0; i < [teamArray count]; i++)
 	{
 		NSDictionary* teamDict = [teamArray objectAtIndex:i];
-		[items addObject:[bruletteTeam bruletteTeamWithName:teamDict]];
+		[items addObject:[BruletteTeam bruletteTeamWithName:teamDict]];
 	}
 	
 	[self returnTeams:items];
 }
 
--(bruletteTeam*)returnTeam:(int)teamID
+-(BruletteTeam*)returnTeam:(int)teamID
 {
 	return [items objectAtIndex:teamID];
 }
@@ -371,7 +372,7 @@
 	//NSArray *teamArray = [response objectForKey:@"entry"];
 
 	NSDictionary* teamDict = [response objectForKey:@"entry"];
-	[items addObject:[bruletteTeam bruletteTeamWithName:teamDict]];
+	[items addObject:[BruletteTeam bruletteTeamWithName:teamDict]];
 	[self getTeams];
 }
 

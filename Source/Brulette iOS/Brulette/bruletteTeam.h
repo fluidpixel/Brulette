@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface bruletteTeam : NSObject
+@interface BruletteTeam : NSObject
 
 // A text description of this item.
 @property (nonatomic, copy) NSString *name;

@@ -7,7 +7,7 @@
 //
 
 #import "bruletteViewController.h"
-#import "bruletteLogin.h"
+#import "BruletteData.h"
 #import "bruletteTeamCell.h"
 
 #import "bruletteTeamViewController.h"
@@ -19,14 +19,14 @@
 @implementation bruletteViewController
 {
 	// an array of to-do items
-	bruletteTeam* teamDict;
+	BruletteTeam* teamDict;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-	bruletteDataClass = [[bruletteLogin alloc] init];
+	bruletteDataClass = [[BruletteData alloc] init];
 	
 	[bruletteDataClass setDelegate:self];
 	
@@ -179,7 +179,7 @@
     
 	if (index < items.count)
 	{
-		bruletteTeam *item = items[index];
+		BruletteTeam *item = items[index];
 		
 		// set the text
 		cell.teamName.text = item.name;
@@ -207,7 +207,7 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	bruletteTeam *item = items[[indexPath row]];
+	BruletteTeam *item = items[[indexPath row]];
 	
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //add code here for when you hit delete

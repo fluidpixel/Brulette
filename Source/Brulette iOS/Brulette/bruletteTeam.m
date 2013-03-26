@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Fluid Pixel Ltd. All rights reserved.
 //
 
-#import "bruletteTeam.h"
+#import "BruletteTeam.h"
 
-@implementation bruletteTeam
+@implementation BruletteTeam
 
 -(id)initWithName:(NSDictionary*)team {
     if (self = [super init]) {
@@ -21,7 +21,7 @@
 }
 
 +(id)bruletteTeamWithName:(NSDictionary *)team {
-    return [[bruletteTeam alloc] initWithName:team];
+    return [[BruletteTeam alloc] initWithName:team];
 }
 
 @end
