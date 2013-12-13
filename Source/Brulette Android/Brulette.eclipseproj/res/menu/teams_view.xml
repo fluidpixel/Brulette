@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+     <item android:id="@+id/refreshTeams"
+          android:title="@string/refresh"
+          android:icon="@drawable/refresh"
+          android:orderInCategory="100"
+          android:showAsAction="always|withText" />
+    
+    <item android:id="@+id/searchTeam"
+          android:title="@string/search"
+          android:icon="@drawable/search"
+          android:orderInCategory="200"
+          android:showAsAction="always|withText" />
+    
+    <item
+        android:id="@+id/addTeam"
+        android:icon="@drawable/add"
+        android:orderInCategory="300"
+        android:showAsAction="always|withText"
+        android:title="@string/addTeam">
+    </item>
+
+</menu>

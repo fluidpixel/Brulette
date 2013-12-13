@@ -1,0 +1,97 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".SelectSmootherView" >
+
+    <TextView
+        android:id="@+id/SelectSmootherView_textViewtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:text="@string/select_smoother_title"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/SelectSmootherView_textViewtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SelectSmootherView_textViewtitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/select_smoother_text"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <AutoCompleteTextView
+        android:id="@+id/SelectSmootherView_TagTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="36dp"
+        android:ems="10"
+        android:singleLine="true" >
+
+        <requestFocus />
+    </AutoCompleteTextView>
+
+    <ImageView
+        android:id="@+id/SelectSmootherView_AddImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView1"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/SelectSmootherView_TagTextView"
+        android:src="@drawable/add2" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/SelectSmootherView_TagTextView"
+        android:layout_toLeftOf="@+id/SelectSmootherView_TagTextView"
+        android:src="@drawable/search2" />
+
+    <ImageView
+        android:id="@+id/SelectSmootherView_LimeImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/SelectSmootherView_MilkImageView"
+        android:layout_alignRight="@+id/SelectSmootherView_textViewtitle"
+        android:src="@drawable/lemon" />
+
+    <ImageView
+        android:id="@+id/SelectSmootherView_MilkImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/SelectSmootherView_TagTextView"
+        android:layout_centerVertical="true"
+        android:src="@drawable/milk" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignLeft="@+id/SelectSmootherView_LimeImageView"
+        android:text="Lemon"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SelectSmootherView_MilkImageView"
+        android:layout_marginTop="15dp"
+        android:layout_toLeftOf="@+id/SelectSmootherView_textViewtitle"
+        android:text="Milk"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</RelativeLayout>

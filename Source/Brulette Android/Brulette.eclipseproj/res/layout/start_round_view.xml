@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".StartRound" >
+
+     <ExpandableListView
+        android:id="@+id/StartRoundView_TeamExpandableListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp" >
+         
+    </ExpandableListView>
+    
+     
+    
+     <Button
+        android:id="@+id/StartRoundView_StartButton"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        style="@style/button_text"
+        android:background="@drawable/button"
+        android:text=" Start "
+        android:layout_alignParentTop="true"
+        >
+     </Button>
+
+     <TextView
+         android:id="@+id/textView1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="5dp"
+         
+         android:layout_alignTop="@+id/StartRoundView_TimeNumberPicker"
+         android:text="Round Time :"
+         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+     <TextView
+         android:id="@+id/textView2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="25dp"
+         
+         android:layout_below="@+id/textView1"
+         android:text="(minute)"
+         android:textAppearance="?android:attr/textAppearanceSmall" />
+     
+     <views.util.NumberPicker
+         android:id="@+id/StartRoundView_TimeNumberPicker"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="100dp" >
+
+    </views.util.NumberPicker>
+
+</RelativeLayout>
