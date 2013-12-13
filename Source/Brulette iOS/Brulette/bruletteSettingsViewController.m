@@ -31,13 +31,14 @@
 	bruletteDataClass = [[BruletteData alloc] init];
 	[bruletteDataClass setDelegate:self];
 	
-	[bruletteDataClass getUser];
+	[bruletteDataClass updateUser:nil];
 	
 }
 
 -(void)returnUser:(NSDictionary*)user
 {
 	NSLog(@"user: %@", user);
+	self.nameTextField.text = [user objectForKey:@"name"];
 }
 
 - (void)didReceiveMemoryWarning

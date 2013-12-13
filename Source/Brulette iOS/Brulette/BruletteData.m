@@ -241,9 +241,12 @@
 -(void)updateUser:(NSString*)name
 {
 	//curl -X PUT https://salty-plains-8447.herokuapp.com/api/users --data "auth_token=LGGPPzt5Kr9RxVjdnegi&user[name]=jeremiahAlex&user[current_password]=password"
-
 	
-	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@&user[current_password]=password&user[name]=%@", auth_token, name];
+	NSString *postBody = nil;
+	if(name)
+		postBody = [NSString stringWithFormat:@"auth_token=%@&user[current_password]=password&user[name]=%@", auth_token, name];
+	else
+		postBody = [NSString stringWithFormat:@"auth_token=%@&user[current_password]=password", auth_token];
 	
 	[self processRequest:postBody HTTPMethod:@"PUT" selector:@"processUpdate:" url:usersURL];
 	
@@ -478,6 +481,8 @@
 -(void)processUpdate:(NSDictionary*)response
 {
 	NSLog(@"user updated");
+	NSDictionary* user = [response objectForKey:@"entry"];
+	[self returnUser:user];
 }
 
 -(void)processGetTeams:(NSDictionary*)response
