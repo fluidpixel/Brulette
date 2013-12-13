@@ -34,7 +34,14 @@
 	
 	[bruletteDataClass setDelegate:self];
 	
-	[bruletteDataClass getUsersBrews:@"coffee"];
+	[bruletteDataClass getUsersBrews:@""];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+	
+	[bruletteDataClass getUsersBrews:@""];
+    [self.brewTable reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,13 +97,14 @@
 		
 		// set the text
 		cell.brewNameLabel.text = brew.name;
-
+		cell.brewNameLabel.textColor = [UIColor blackColor];
 		[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 		
 	}
 	else
 	{
 		cell.brewNameLabel.text = @"New Brew";
+		cell.brewNameLabel.textColor = [[UIColor alloc] initWithRed:107.00 / 255 green:142.00 / 255 blue:35.00 / 255 alpha:1.0];
 		[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 	}
 	
@@ -105,21 +113,45 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	bruletteBrewCell *selectedCell = (bruletteBrewCell*) [tableView cellForRowAtIndexPath:indexPath];
+	//bruletteBrewCell *selectedCsell = (bruletteBrewCell*) [tableView cellForRowAtIndexPath:indexPath];
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
 	int index = [indexPath row];
 	
-	BruletteBrew *brew = brews[index];
-	NSLog(@"brew: %@", brew.name);
+	if (brews.count > index)
+	{
+		BruletteBrew *brew = brews[index];
+		NSLog(@"brew: %@", brew.name);
+		[self performSegueWithIdentifier:@"newBrewSegue" sender:brew];
+	}
+	else
+		[self performSegueWithIdentifier:@"newBrewSegue" sender:nil];
 	
 	//goto new brew screen
-	[self performSegueWithIdentifier:@"newBrewSegue" sender:brew];
+	
 	
 	
 	
 }
 
+#pragma mark Deleting of Brews
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+	return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	BruletteBrew *brew = brews[[indexPath row]];
+	
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //add code here for when you hit delete
+		NSLog(@"delete id: %@", brew.name);
+		
+		[bruletteDataClass deleteBrew:[brew.brew_id stringValue]];
+		
+    }
+}
 
 @end

@@ -18,7 +18,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.brew = [[BruletteBrew alloc] init];
     }
     return self;
 }
@@ -33,6 +33,8 @@
 	bruletteDataClass = [[BruletteData alloc] init];
 	[bruletteDataClass setDelegate:self];
 	
+	
+
 	for (id subView in self.view.subviews)
     {
         if ([subView isKindOfClass:[UITextField class]]) {
@@ -47,7 +49,15 @@
 											   object:nil];
 	
 	if(self.brew)
+	{
 		[self updateTextFields];
+		[self.actionBarButton setTitle:@"Update"];
+	}
+	else
+	{
+		self.brew = [[BruletteBrew alloc] init];
+		[self.actionBarButton setTitle:@"Create"];
+	}
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,7 +97,6 @@
 		[self.milkField resignFirstResponder];
 		[self.sizeField resignFirstResponder];
 		[self.sugarsField resignFirstResponder];
-		[self.sweetenersField resignFirstResponder];
 		[self.timeField resignFirstResponder];
 		
     }
@@ -109,7 +118,7 @@
     [UIView animateWithDuration:0.3f animations:^ {
 		//[self.view setNeedsUpdateConstraints];
 		//[self.view layoutIfNeeded];
-        self.view.frame = CGRectMake(0, 20, 320, self.screenHeight);
+        self.view.frame = CGRectMake(0, 0, 320, self.screenHeight);
     }];
 }
 
@@ -125,10 +134,9 @@
 	self.brew.name = self.nameField.text;
 	self.brew.drink = self.drinkField.text;
 	self.brew.method = self.methodField.text;
-	self.brew.milk = self.milkField.text;
+	self.brew.smooth = self.milkField.text;
 	self.brew.size = self.sizeField.text;
-	self.brew.sugars = self.sugarsField.text;
-	self.brew.sweeteners = self.sweetenersField.text;
+	self.brew.sweet = self.sugarsField.text;
 	self.brew.time = self.timeField.text;
 
 	NSLog(@"brew: %@", self.brew);
@@ -139,7 +147,7 @@
 	self.nameField.text = self.brew.name;
 	self.drinkField.text = self.brew.drink;
 	self.methodField.text = self.brew.method;
-	self.milkField.text = self.brew.milk;
+	self.milkField.text = self.brew.smooth;
 	self.sizeField.text = self.brew.size;
 	//self.sugarsField.text = self.brew.sugars;
 	//self.sweetenersField.text = self.brew.sweeteners;
@@ -153,8 +161,21 @@
 
 - (IBAction)saveButtonAction:(id)sender
 {
-	[bruletteDataClass newBrewWithBrew:self.brew];
+	[self updateBrew];
+	if(self.brew.brew_id)
+		[bruletteDataClass updateBrewWithBrew:self.brew];
+	else
+		[bruletteDataClass newBrewWithBrew:self.brew];
+	
+	[self performSelector:@selector(pop) withObject:self afterDelay:1.0 ];
+	[self.activityIndicator setHidden:NO];
+	
 }
 
+-(void)pop
+{
+	[self.activityIndicator setHidden:YES];
+	[self.navigationController popViewControllerAnimated:TRUE];
+}
 
 @end

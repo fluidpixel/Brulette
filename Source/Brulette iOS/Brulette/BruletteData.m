@@ -17,7 +17,7 @@
 #define teamsURL [NSURL URLWithString:@"https://salty-plains-8447.herokuapp.com/api/teams"]
 #define membershipURL [NSURL URLWithString:@"https://salty-plains-8447.herokuapp.com/api/memberships"]
 #define roundsURL [NSURL URLWithString:@"https://salty-plains-8447.herokuapp.com/api/rounds"]
-
+#define ordersURL [NSURL URLWithString:@"https://salty-plains-8447.herokuapp.com/api/orders"]
 #define brewUrl [NSURL URLWithString:@"https://salty-plains-8447.herokuapp.com/api/brews"]
 
 @implementation BruletteData
@@ -29,6 +29,7 @@
 	
     if(self) {
         auth_token = [[NSUserDefaults standardUserDefaults] objectForKey:@"auth_token"];
+		user_id = [[NSUserDefaults standardUserDefaults] objectForKey:@"user_id"];
     }
     return self;
 }
@@ -59,11 +60,46 @@
 		[[self delegate] returnRound:round];
 }
 
+-(void)returnRounds:(NSArray *)roundArray
+{
+	if([self delegate] != nil)
+		[[self delegate] returnRounds:roundArray];
+}
+
+-(void)returnOpenRounds:(NSArray *)openRoundArray
+{
+	if([self delegate] != nil)
+		[[self delegate] returnOpenRounds:openRoundArray];
+}
+
 -(void)returnBrews:(NSArray *)brewArray
 {
 	if([self delegate] != nil)
 		[[self delegate] returnBrews:brewArray];
 	
+}
+
+-(void)returnUser:(NSDictionary *)user
+{
+	if([self delegate] != nil)
+		[[self delegate] returnUser:user];
+
+}
+
+-(BruletteTeam*)returnTeam:(int)teamID
+{
+	return [items objectAtIndex:teamID];
+}
+
+-(NSString*)returnDeviceToken
+{
+	NSString *deviceToken = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+	
+	deviceToken = [deviceToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+	deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+	deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@"-" withString:@""];
+	
+	return deviceToken;
 }
 
 
@@ -138,12 +174,9 @@
 #pragma mark User Requests
 -(void)registerUser
 {
-	
 //http://salty-plains-8447.herokuapp.com/api/users -X POST --data "user[email]=jm@ideonic.com&user[password]=password&user[password_confirmation]=password&user[name]=jerrymiah"
 
-	NSString *deviceToken = [[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"] description];
-	deviceToken = [deviceToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-	deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+	NSString *deviceToken = [self returnDeviceToken];
 	
 	if (!deviceToken)
 	{
@@ -159,7 +192,7 @@
 		NSString *email = [NSString stringWithFormat:@"%@@fpstudios.com", deviceToken];
 		
 		NSString *postBody = [NSString stringWithFormat:@"user[name]=%@&user[email]=%@&user[password]=%@&user[password_confirmation]=%@&user[device_provider]=%@&user[device_token]=%@",
-							  deviceToken,
+							  [deviceToken substringToIndex:6],
 							  email,
 							  @"password",
 							  @"password",
@@ -173,12 +206,10 @@
 {
 	//curl https://salty-plains-8447.herokuapp.com/api/users/login --data "email=jeremiah@ideonic.com&password=password"
 	
-	NSString *deviceToken = [[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"] description];
-	deviceToken = [deviceToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-	deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+	NSString *deviceToken = [self returnDeviceToken];
 	
-	NSString *email = [NSString stringWithFormat:@"%@@fpstudios.com", deviceToken];
-
+//	NSString *email = [NSString stringWithFormat:@"%@@fpstudios.com", deviceToken];
+	NSString *email = @"169d8dc790fb4fd1b0fe1255ddaf90f7@fpstudios.com";
 	NSString *postBody = [NSString stringWithFormat:@"email=%@&password=%@", email, @"password"];
 	NSURL* url = [usersURL URLByAppendingPathComponent:@"login"];
 	
@@ -192,6 +223,29 @@
 	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@", auth_token];
 	
 	[self processRequest:postBody HTTPMethod:@"DELETE" selector:@"processDelete:" url:usersURL];
+	
+}
+
+-(void)getUser
+{
+	//curl -X GET https://salty-plains-8447.herokuapp.com/api/users --data "auth_token=LGGPPzt5Kr9RxVjdnegi&user[name]=jeremiahAlex&user[current_password]=password"
+	
+	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@", auth_token];
+	
+	NSURL* url = [usersURL URLByAppendingPathComponent:[NSString stringWithFormat:@"/%@", user_id]];
+	
+	[self processRequest:postBody HTTPMethod:@"GET" selector:@"processGetUser:" url:url];
+	
+}
+
+-(void)updateUser:(NSString*)name
+{
+	//curl -X PUT https://salty-plains-8447.herokuapp.com/api/users --data "auth_token=LGGPPzt5Kr9RxVjdnegi&user[name]=jeremiahAlex&user[current_password]=password"
+
+	
+	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@&user[current_password]=password&user[name]=%@", auth_token, name];
+	
+	[self processRequest:postBody HTTPMethod:@"PUT" selector:@"processUpdate:" url:usersURL];
 	
 }
 
@@ -290,13 +344,6 @@
 	[self processRequest:postBody HTTPMethod:@"PUT" selector:@"processUpdateTeamMembership:" url:url];
 	
 }
--(void)startRoundWithTeamId:(NSString *)teamId
-{
-	//curl POST https://localhost:3000/api/rounds --data "auth_token=MjpgZsA5npo1s3tsq6jn&team_id=1&volunteer=false&time=100"
-	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@&team_id=%@&volunteer=false&time=100", auth_token, teamId];
-	
-	[self processRequest:postBody HTTPMethod:@"POST" selector:@"processStartRound:" url:roundsURL];
-}
 
 -(void)getUsersBrews:(NSString *)brewType
 {
@@ -308,9 +355,8 @@
 
 -(void)newBrewWithBrew:(BruletteBrew *)brew
 {
-	//curl https://localhost:3000/api/brews --data "auth_token=MjpgZsA5npo1s3tsq6jn&round_id=12&brew[drink]=Coffee&brew[method]=No preference&brew[milk]=Skimmed&brew[name]=jBrew&brew[size]=S&brew[sugars]=1&brew[sweeteners]=1&brew[time]=100"
-
-	NSString *brewString = @"round_id=12&brew[drink]=Coffee&brew[method]=No preference&brew[milk]=Skimmed&brew[name]=jBrew&brew[size]=S&brew[sugars]=1&brew[sweeteners]=1&brew[time]=100";
+	//curl https://salty-plains-8447.herokuapp.com/api/brews --data "auth_token=hwKT1x5jYpFwxtnpusB3&brew_tags=tea:drink,sugar:sweet"
+	NSString *brewString = [NSString stringWithFormat:@"brew[name]=%@&brew_tags=%@:drink,%@:method,%@:sweet,%@:smooth,%@:time", brew.name, brew.drink, brew.method, brew.sweet, brew.smooth, brew.time];
 	
 	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@&%@", auth_token, brewString];
 	
@@ -328,6 +374,63 @@
 	[self processRequest:postBody HTTPMethod:@"POST" selector:@"processNewBrew:" url:brewUrl];
 }
 
+-(void)updateBrewWithBrew:(BruletteBrew *)brew
+{
+	//curl -X PUT https://salty-plains-8447.herokuapp.com/api/brews/10 --data "auth_token=LGGPPzt5Kr9RxVjdnegi&brew_tags=tea:drink,sugar:sweet"
+	NSString *brewString = [NSString stringWithFormat:@"brew[name]=%@&brew_tags=%@:drink,%@:method,%@:sweet,%@:smooth,%@:time", brew.name, brew.drink, brew.method, brew.sweet, brew.smooth, brew.time];
+	
+	NSURL* url = [brewUrl URLByAppendingPathComponent:[brew.brew_id stringValue]];
+	
+	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@&%@", auth_token, brewString];
+	
+	[self processRequest:postBody HTTPMethod:@"PUT" selector:@"processNewBrew:" url:url];
+}
+-(void)deleteBrew:(NSString*)brew_id
+{
+	//curl -X DELETE https://salty-plains-8447.herokuapp.com/api/teams/5 --data "auth_token=VZpRUA4yq6FkoT68Hx9y"
+	
+	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@", auth_token];
+	NSURL* url = [brewUrl URLByAppendingPathComponent:brew_id];
+	
+	[self processRequest:postBody HTTPMethod:@"DELETE" selector:@"processDeleteBrew:" url:url];
+}
+
+#pragma mark Round Requests
+
+-(void)getRounds
+{
+	//curl -X GET https://salty-plains-8447.herokuapp.com/api/rounds --data "auth_token=MjpgZsA5npo1s3tsq6jn&status=Open"
+
+	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@", auth_token];
+	
+	[self processRequest:postBody HTTPMethod:@"GET" selector:@"processGetRounds:" url:roundsURL];
+}
+
+-(void)getOpenRounds
+{
+	//curl -X GET https://salty-plains-8447.herokuapp.com/api/rounds --data "auth_token=MjpgZsA5npo1s3tsq6jn&status=Open"
+	
+	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@&status=open", auth_token];
+	
+	[self processRequest:postBody HTTPMethod:@"GET" selector:@"processGetOpenRounds:" url:roundsURL];
+}
+
+-(void)joinRound:(NSString*)round_id
+{
+	//curl https://salty-plains-8447.herokuapp.com/api/orders --data "auth_token=hwKT1x5jYpFwxtnpusB3&round_id=1&brew_id=20"
+	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@&round_id=%@&brew_id=86", auth_token, round_id];
+	
+	[self processRequest:postBody HTTPMethod:@"POST" selector:@"processJoinedRound:" url:ordersURL];
+	
+}
+-(void)startRoundWithTeamId:(NSString *)teamId
+{
+	//curl POST https://localhost:3000/api/rounds --data "auth_token=MjpgZsA5npo1s3tsq6jn&team_id=1&volunteer=false&time=100"
+	NSString *postBody = [NSString stringWithFormat:@"auth_token=%@&team_id=%@&volunteer=false&time=100", auth_token, teamId];
+	
+	[self processRequest:postBody HTTPMethod:@"POST" selector:@"processStartRound:" url:roundsURL];
+}
+
 #pragma mark Process Responses
 -(void)processUser:(NSDictionary*)response
 {
@@ -339,23 +442,42 @@
 	}
 	else
 	{
-		//P4ajzpzU4z4bnfCG86Ys
 		auth_token = [response objectForKey:@"auth_token"];
+		NSDictionary* user = [response objectForKey:@"user"];
+		user_id = [user objectForKey:@"id"];
+		
 		[[NSUserDefaults standardUserDefaults] setObject:auth_token forKey:@"auth_token"];
+		[[NSUserDefaults standardUserDefaults] setObject:user_id forKey:@"user_id"];
 	}
 }
 
 -(void)processLoginUser:(NSDictionary*)response
 {
+	NSLog(@"process login user");
 	auth_token = [response objectForKey:@"auth_token"];
+	user_id = [response objectForKey:@"user_id"];
+	
 	[[NSUserDefaults standardUserDefaults] setObject:auth_token forKey:@"auth_token"];
+	[[NSUserDefaults standardUserDefaults] setObject:user_id forKey:@"user_id"];
 	
 	[self getTeams];
+}
+
+-(void)processGetUser:(NSDictionary *)response
+{
+	NSLog(@"get user");
+	NSDictionary* user = [response objectForKey:@"user"];
+	[self returnUser:user];
 }
 
 -(void)processDelete:(NSDictionary*)response
 {
 	NSLog(@"user deleted");
+}
+
+-(void)processUpdate:(NSDictionary*)response
+{
+	NSLog(@"user updated");
 }
 
 -(void)processGetTeams:(NSDictionary*)response
@@ -375,12 +497,53 @@
 	[self returnTeams:items];
 }
 
--(BruletteTeam*)returnTeam:(int)teamID
+-(void)processGetRounds:(NSDictionary*)response
 {
-	return [items objectAtIndex:teamID];
+	NSLog(@"process Get rounds");
+	items = nil;
+	items = [[NSMutableArray alloc] init];
+	
+	NSArray *roundArray = [response objectForKey:@"entries"];
+	for (NSDictionary* round in roundArray)
+	{
+		[items addObject:round];
+	}
+	
+	[self returnRounds:items];
+}
+
+-(void)processGetOpenRounds:(NSDictionary*)response
+{
+	NSLog(@"process Get Open rounds");
+	items = nil;
+	items = [[NSMutableArray alloc] init];
+	
+	NSArray *roundArray = [response objectForKey:@"entries"];
+	for (NSDictionary* round in roundArray)
+	{
+		[items addObject:round];
+	}
+	
+	[self returnOpenRounds:items];
+}
+
+-(void)processJoinedRound:(NSDictionary*)response
+{
+	NSLog(@"process Join round");
+	items = nil;
+	items = [[NSMutableArray alloc] init];
+	
+	NSArray *roundArray = [response objectForKey:@"entries"];
+	for (NSDictionary* round in roundArray)
+	{
+		[items addObject:round];
+	}
+	
+	//[self returnRounds:items];
 }
 
 
+#pragma mark Process Return Results
 
 -(void)processAddTeam:(NSDictionary*)response
 {
@@ -454,10 +617,9 @@
 
 	NSArray *responseArray = [response objectForKey:@"entries"];
 	
-	for(int i = 0; i < [responseArray count]; i++)
+	for(NSDictionary* brew in responseArray)
 	{
-		NSDictionary* brewDict = [responseArray objectAtIndex:i];
-		[brews addObject:[BruletteBrew bruletteBrewWithBrew:brewDict]];
+		[brews addObject:[BruletteBrew bruletteBrewWithBrew:brew]];
 	}
 	
 	[self returnBrews:brews];
@@ -467,6 +629,13 @@
 -(void)processNewBrew:(NSDictionary *)response
 {
 	NSLog(@"brew Added");
+}
+
+-(void)processDeleteBrew:(NSDictionary*)response
+{
+	NSLog(@"Brew deleted");
+	
+	[self getUsersBrews:nil];
 }
 
 @end

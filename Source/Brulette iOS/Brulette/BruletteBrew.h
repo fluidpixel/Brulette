@@ -10,14 +10,15 @@
 
 @interface BruletteBrew : NSObject
 
+@property (nonatomic, copy) NSNumber *brew_id;
 @property (nonatomic, copy) NSString *drink;
 @property (nonatomic, copy) NSString *method;
-@property (nonatomic, copy) NSString *milk;
+@property (nonatomic, copy) NSString *smooth;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *size;
-@property (nonatomic, copy) NSString *sugars;
-@property (nonatomic, copy) NSString *sweeteners;
+@property (nonatomic, copy) NSString *sweet;
 @property (nonatomic, copy) NSString *time;
+
 
 -(id)initWithBrew:(NSDictionary*)brew;
 +(id)bruletteBrewWithBrew:(NSDictionary *)brew;

@@ -10,10 +10,9 @@
 #import "BruletteData.h"
 #import "BruletteBrew.h"
 
-@interface bruletteNewBrewViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface bruletteNewBrewViewController : UIViewController <UITextFieldDelegate>
 {
 	BruletteData* bruletteDataClass;
-
 }
 
 @property (nonatomic, strong) BruletteBrew* brew;
@@ -28,6 +27,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *sugarsField;
 @property (weak, nonatomic) IBOutlet UITextField *sweetenersField;
 @property (weak, nonatomic) IBOutlet UITextField *timeField;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *actionBarButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 - (IBAction)backButtonAction:(id)sender;
 - (IBAction)saveButtonAction:(id)sender;

@@ -10,6 +10,8 @@
 #import "BruletteData.h"
 #import "bruletteMemberCell.h"
 
+#import "bruletteRoundViewController.h"
+
 @interface bruletteTeamViewController ()
 
 @end
@@ -116,6 +118,8 @@
 		
 		// set the text
 		cell.teamMemberLabel.text = [member objectForKey:@"user_name"];
+		cell.teamMemberLabel.textColor = [UIColor blackColor];
+		
 		if ([member objectForKey:@"active"])
 		{
 			[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
@@ -129,6 +133,7 @@
 	else
 	{
 		cell.teamMemberLabel.text = @"New Member";
+		cell.teamMemberLabel.textColor = [[UIColor alloc] initWithRed:107.00 / 255 green:142.00 / 255 blue:35.00 / 255 alpha:1.0];
 		[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 	}
 	
@@ -143,14 +148,15 @@
 	
 	int index = [indexPath row];
 	
-	NSDictionary *member = teamMembers[index];
-	
 	if ([selectedCell.teamMemberLabel.text isEqualToString:@"New Member"])
 	{
 		//[self.bruletteLogin addTeam];
 	}
 	else
 	{
+
+		NSDictionary *member = teamMembers[index];
+
 		if(selectedCell.accessoryType == UITableViewCellAccessoryCheckmark)
 		{
 			[selectedCell setAccessoryType:UITableViewCellAccessoryNone];
@@ -161,6 +167,22 @@
 			[selectedCell setAccessoryType:UITableViewCellAccessoryCheckmark];
 			[bruletteDataClass updateTeamMembershipWithId:[[member objectForKey:@"id"] stringValue] active:@"true"];
 		}
+	}
+}
+
+-(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	NSLog(@"about to delete");
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)selectedBrew
+{
+	
+    if ([[segue identifier] isEqualToString:@"rounds"])
+	{
+		bruletteRoundViewController *bruletteRoundViewController = [segue destinationViewController];
+		
+		bruletteRoundViewController.team_id = self.bruletteTeam.teamId;
 	}
 }
 

@@ -27,14 +27,8 @@
     [super viewDidLoad];
 
 	bruletteDataClass = [[BruletteData alloc] init];
-	
 	[bruletteDataClass setDelegate:self];
-	
-	//[self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
-	//[self.navigationController.navigationBar setTranslucent:YES];
-	
-	// Do any additional setup after loading the view, typically from a nib.
-	
+
 	[self.teamTableView setDataSource:self];
 	[self.teamTableView setDelegate:self];
 	
@@ -45,12 +39,13 @@
 	if (!auth_token)
 	{
 		[bruletteDataClass registerUser];
+		//[bruletteDataClass loginUser];
 		//[bruletteDataClass deleteUser];
 	}
 	else
 	{
 		NSLog(@"auth_token: %@", auth_token);
-		
+		[bruletteDataClass loginUser];
 		//on launch set the auth_token to be reused throughout
 		//[bruletteDataClass setAuthentificationToken];
 		
@@ -90,7 +85,7 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
 	NSLog(@"selected cell: %@", selectedCell.teamName.text);
-	if ([selectedCell.teamName.text isEqualToString:@"New Team"])
+	if ([selectedCell.teamName.text isEqualToString:@"Create New Team"])
 	{
 		[bruletteDataClass addTeam];
 	}
@@ -184,12 +179,16 @@
 		
 		// set the text
 		cell.teamName.text = item.name;
+		cell.teamName.textColor = [UIColor blackColor];
+		
 		cell.teamSlug.text = item.slug;
 		[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 	}
 	else
 	{
-		cell.teamName.text = @"New Team";
+		cell.teamName.text = @"Create New Team";
+		cell.teamName.textColor = [[UIColor alloc] initWithRed:107.00 / 255 green:142.00 / 255 blue:35.00 / 255 alpha:1.0];
+		
 		cell.teamSlug.text = @"";
 		[cell setAccessoryType:UITableViewCellAccessoryNone];
 	}
@@ -217,6 +216,20 @@
 		[bruletteDataClass deleteTeamWithId:item.teamId];
 		
     }
+}
+
+-(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	bruletteTeamCell *cell = (bruletteTeamCell*)[tableView cellForRowAtIndexPath:indexPath];
+	NSLog(@"about to delete");
+	[cell.teamSlug setHidden:TRUE];
+	
+}
+
+-(void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	bruletteTeamCell *cell = (bruletteTeamCell*)[tableView cellForRowAtIndexPath:indexPath];
+	[cell.teamSlug setHidden:FALSE];
 }
 
 @end

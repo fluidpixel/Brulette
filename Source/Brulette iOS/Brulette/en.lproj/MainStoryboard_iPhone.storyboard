@@ -1,31 +1,80 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="oP2-eI-Hc8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A598" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="oP2-eI-Hc8">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Brulette View Controller-->
+        <!--Brulette Settings View Controller - Settings-->
+        <scene sceneID="cYq-ku-jeL">
+            <objects>
+                <viewController id="6Ao-ip-J0Y" customClass="bruletteSettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ASr-v9-R9D"/>
+                        <viewControllerLayoutGuide type="bottom" id="JAw-x5-koe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dZA-SK-uxN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="va3-eH-gYa">
+                                <rect key="frame" x="221" y="98" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" red="0.87058830259999997" green="0.16078431900000001" blue="0.12549020350000001" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f0d-rC-MIy">
+                                <rect key="frame" x="20" y="98" width="193" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="Bmu-g8-HOb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="mUC-fn-5Jt">
+                            <connections>
+                                <action selector="saveAction:" destination="6Ao-ip-J0Y" id="8dW-nx-Yyb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="f0d-rC-MIy" id="Oho-8F-aLg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4XC-KQ-pDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="236" y="-698"/>
+        </scene>
+        <!--Brulette View Controller - My Teams-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="bruletteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z92-Ue-Wis"/>
+                        <viewControllerLayoutGuide type="bottom" id="OHv-Ub-rsD"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="74l-p4-pzk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="74l-p4-pzk">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="512"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="251" id="GBi-nM-jgx"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bruletteTeamCell" rowHeight="64" id="wpn-rE-pbZ" customClass="bruletteTeamCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="64"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="63"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wpn-rE-pbZ" id="VXR-hh-rTF">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Team Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sxi-2v-dVJ">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Team Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sxi-2v-dVJ">
+                                                    <rect key="frame" x="20" y="21" width="128" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="128" id="h55-Ny-hKN"/>
                                                     </constraints>
@@ -34,21 +83,21 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="slug" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZv-zf-XWA">
+                                                    <rect key="frame" x="151" y="21" width="105" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="128" id="mdP-TE-8ne"/>
+                                                        <constraint firstAttribute="width" constant="105" id="mdP-TE-8ne"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstItem="Sxi-2v-dVJ" firstAttribute="leading" secondItem="wpn-rE-pbZ" secondAttribute="leading" constant="20" type="default" id="HPx-pn-tB6"/>
-                                            <constraint firstItem="Sxi-2v-dVJ" firstAttribute="top" secondItem="wpn-rE-pbZ" secondAttribute="top" constant="21" id="bbu-zq-XCl"/>
-                                            <constraint firstItem="mZv-zf-XWA" firstAttribute="leading" secondItem="Sxi-2v-dVJ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="lD6-Zw-iki"/>
-                                            <constraint firstItem="mZv-zf-XWA" firstAttribute="baseline" secondItem="Sxi-2v-dVJ" secondAttribute="baseline" type="default" id="p5U-3v-szg"/>
+                                            <constraint firstItem="mZv-zf-XWA" firstAttribute="leading" secondItem="Sxi-2v-dVJ" secondAttribute="trailing" constant="3" id="Ecy-X2-chK"/>
+                                            <constraint firstItem="Sxi-2v-dVJ" firstAttribute="leading" secondItem="wpn-rE-pbZ" secondAttribute="leading" constant="20" id="cKr-o2-CR6"/>
+                                            <constraint firstItem="mZv-zf-XWA" firstAttribute="baseline" secondItem="Sxi-2v-dVJ" secondAttribute="baseline" id="pGF-UI-8CM"/>
+                                            <constraint firstItem="Sxi-2v-dVJ" firstAttribute="top" secondItem="wpn-rE-pbZ" secondAttribute="top" constant="21" id="xGb-Dp-APp"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="teamName" destination="Sxi-2v-dVJ" id="C5X-GQ-MHR"/>
@@ -58,88 +107,68 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your Teams" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tsn-RV-1ih">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="161" id="1wN-ja-iW3"/>
-                                    <constraint firstAttribute="height" constant="21" id="zIu-N7-vsZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="h4Wo8U7V" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Bx-ED-ViU">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="121" id="Nqv-FR-uNI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNJ-Wf-CkJ">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="109" id="H2b-gL-APs"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="JOIN">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="joinTeam:" destination="2" eventType="touchUpInside" id="E8a-B8-1MV"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YwC-gh-oK3">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="My Brews">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="fHM-4s-n6u" kind="push" identifier="yourBrewPush" id="PY6-nb-2KG"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nOD-UC-h9h">
+                                <rect key="frame" x="0.0" y="510" width="320" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Have a Team Slug?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Bx-ED-ViU">
+                                        <rect key="frame" x="20" y="13" width="163" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNJ-Wf-CkJ">
+                                        <rect key="frame" x="211" y="13" width="109" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="JOIN TEAM">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="joinTeam:" destination="2" eventType="touchUpInside" id="W63-su-fca"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.89411765340000005" green="0.90588235859999999" blue="0.89803922179999995" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Tsn-RV-1ih" firstAttribute="centerX" secondItem="74l-p4-pzk" secondAttribute="centerX" type="default" id="1pJ-k7-erg"/>
-                            <constraint firstAttribute="trailing" secondItem="zNJ-Wf-CkJ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="3nW-if-bnp"/>
-                            <constraint firstItem="74l-p4-pzk" firstAttribute="top" secondItem="Tsn-RV-1ih" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="4t5-ia-9YJ"/>
-                            <constraint firstItem="3Bx-ED-ViU" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="9kC-Tt-rfO"/>
-                            <constraint firstItem="3Bx-ED-ViU" firstAttribute="baseline" secondItem="zNJ-Wf-CkJ" secondAttribute="baseline" type="default" id="Bh5-RR-Pzj"/>
-                            <constraint firstItem="Tsn-RV-1ih" firstAttribute="top" secondItem="3" secondAttribute="top" constant="71" id="Fn3-Hd-xp8"/>
-                            <constraint firstAttribute="bottom" secondItem="zNJ-Wf-CkJ" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="LBS-jR-zJd"/>
-                            <constraint firstItem="74l-p4-pzk" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="ici-Ar-Imy"/>
-                            <constraint firstItem="YwC-gh-oK3" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="kkR-Sz-bJc"/>
-                            <constraint firstAttribute="trailing" secondItem="YwC-gh-oK3" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="tuV-qA-Fcg"/>
-                            <constraint firstItem="74l-p4-pzk" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="yH1-NL-ICD"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="VYn-5D-wbe"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" title="My Teams" id="VYn-5D-wbe">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="PaD-No-cVd">
+                            <connections>
+                                <segue destination="6Ao-ip-J0Y" kind="push" id="TJa-0A-OXl"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="My Brews" id="2Mz-9E-4rC">
+                            <connections>
+                                <segue destination="fHM-4s-n6u" kind="push" id="EYS-5l-mrt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="slugTextField" destination="3Bx-ED-ViU" id="KAE-vu-yGT"/>
-                        <outlet property="teamTableView" destination="74l-p4-pzk" id="zLf-sb-m9G"/>
+                        <outlet property="slugTextField" destination="3Bx-ED-ViU" id="69I-WP-H1x"/>
+                        <outlet property="teamTableView" destination="74l-p4-pzk" id="th7-vY-j8s"/>
                         <segue destination="XcJ-dC-OJv" kind="push" identifier="teamPush" id="Vzj-vw-Fau"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="228" y="-55"/>
+            <point key="canvasLocation" x="227" y="-27"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iX6-Wx-KYJ">
             <objects>
-                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="oP2-eI-Hc8" sceneMemberID="viewController">
-                    <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="nDT-29-5mb">
+                <navigationController definesPresentationContext="YES" id="oP2-eI-Hc8" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nDT-29-5mb">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="IQL-uk-SSj">
+                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="2" kind="relationship" relationship="rootViewController" id="xog-Gy-BSm"/>
                     </connections>
@@ -148,48 +177,31 @@
             </objects>
             <point key="canvasLocation" x="-323" y="-60"/>
         </scene>
-        <!--Brulette Brew View Controller-->
+        <!--Brulette Brew View Controller - My Brews-->
         <scene sceneID="hSb-Yk-zKB">
             <objects>
                 <viewController id="fHM-4s-n6u" customClass="bruletteBrewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zsG-c2-s6r"/>
+                        <viewControllerLayoutGuide type="bottom" id="ebc-aj-siT"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qev-48-6Kr">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iu9-lI-aVl">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="backButtonAction:" destination="fHM-4s-n6u" eventType="touchUpInside" id="vAA-Jt-oCt"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your Brews" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMf-ee-4fF">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="nMh-9W-nMF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="O6j-v8-WDl">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="O6j-v8-WDl">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="274" id="iZS-Li-SbJ"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="brewCell" id="Ime-ga-MzE" customClass="bruletteBrewCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ime-ga-MzE" id="8Vn-qO-nDQ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Brew Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUU-nu-pu5">
+                                                    <rect key="frame" x="20" y="11" width="135" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="135" id="Ne3-co-6EI"/>
                                                     </constraints>
@@ -198,11 +210,10 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstItem="tUU-nu-pu5" firstAttribute="leading" secondItem="Ime-ga-MzE" secondAttribute="leading" constant="20" type="default" id="R81-bK-zv8"/>
-                                            <constraint firstItem="tUU-nu-pu5" firstAttribute="top" secondItem="Ime-ga-MzE" secondAttribute="top" constant="11" id="Tz2-Zc-QZj"/>
+                                            <constraint firstItem="tUU-nu-pu5" firstAttribute="leading" secondItem="Ime-ga-MzE" secondAttribute="leading" constant="20" id="1pv-9O-x2p"/>
+                                            <constraint firstItem="tUU-nu-pu5" firstAttribute="top" secondItem="Ime-ga-MzE" secondAttribute="top" constant="11" id="A0R-hW-fRc"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="brewNameLabel" destination="tUU-nu-pu5" id="44y-9q-AId"/>
@@ -216,17 +227,9 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="O6j-v8-WDl" firstAttribute="leading" secondItem="qev-48-6Kr" secondAttribute="leading" type="default" id="4Ag-af-5l4"/>
-                            <constraint firstItem="xMf-ee-4fF" firstAttribute="leading" secondItem="qev-48-6Kr" secondAttribute="leading" constant="8" id="DtZ-BW-HzT"/>
-                            <constraint firstItem="O6j-v8-WDl" firstAttribute="top" secondItem="xMf-ee-4fF" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="GAC-Vq-hKm"/>
-                            <constraint firstItem="Iu9-lI-aVl" firstAttribute="top" secondItem="qev-48-6Kr" secondAttribute="top" type="default" id="HIk-Pr-dgg"/>
-                            <constraint firstItem="O6j-v8-WDl" firstAttribute="trailing" secondItem="qev-48-6Kr" secondAttribute="trailing" type="default" id="gWx-Nf-kxK"/>
-                            <constraint firstItem="xMf-ee-4fF" firstAttribute="top" secondItem="Iu9-lI-aVl" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="kQG-Pa-2OF"/>
-                            <constraint firstItem="Iu9-lI-aVl" firstAttribute="leading" secondItem="qev-48-6Kr" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="uZK-AS-vMW"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="kLb-fG-Wue"/>
+                    <navigationItem key="navigationItem" title="My Brews" id="kLb-fG-Wue"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="brewTable" destination="O6j-v8-WDl" id="RRn-DV-ku6"/>
                         <segue destination="XNu-ZC-T7L" kind="push" identifier="newBrewSegue" id="kF0-qt-RSG"/>
@@ -234,130 +237,80 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="al5-4S-I8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="842" y="-357"/>
+            <point key="canvasLocation" x="842" y="-331"/>
         </scene>
-        <!--Brulette New Brew View Controller-->
+        <!--Brulette New Brew View Controller - New Brew-->
         <scene sceneID="Svt-ci-s78">
             <objects>
                 <viewController id="XNu-ZC-T7L" customClass="bruletteNewBrewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vVy-Mw-SxX"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Ik-4T-Tox"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rq5-sI-7Sy">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Drink" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lfu-Qf-tCS">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Drink Type" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lfu-Qf-tCS">
+                                <rect key="frame" x="20" y="146" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Method" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rcB-Fh-fSs">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Method of brew" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rcB-Fh-fSs">
+                                <rect key="frame" x="20" y="191" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Milk" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kMa-bS-0Po">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Smooth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kMa-bS-0Po">
+                                <rect key="frame" x="20" y="237" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4F-LU-rlE">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Size" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aOf-iA-IE3">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apparatus" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aOf-iA-IE3">
+                                <rect key="frame" x="20" y="282" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ly9-xm-MOC">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of your Brew" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ly9-xm-MOC">
+                                <rect key="frame" x="20" y="100" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sugars" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="78F-WB-0ha">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sweet" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="78F-WB-0ha">
+                                <rect key="frame" x="20" y="328" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sweeteners" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EdF-s2-Sa1">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time for Brew" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AUO-aH-OWE">
+                                <rect key="frame" x="20" y="373" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Time" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AUO-aH-OWE">
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdF-ze-TP9">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="SAVE">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveButtonAction:" destination="XNu-ZC-T7L" eventType="touchUpInside" id="nlR-FL-MhJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dku-1y-2kW">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="backButtonAction:" destination="XNu-ZC-T7L" eventType="touchUpInside" id="r5Q-fL-OFb"/>
-                                </connections>
-                            </button>
+                            <activityIndicatorView hidden="YES" autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="rP7-2R-RTV">
+                                <rect key="frame" x="150" y="230" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ly9-xm-MOC" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="02c-ux-gv3"/>
-                            <constraint firstItem="rcB-Fh-fSs" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="7fi-eD-wZn"/>
-                            <constraint firstItem="aOf-iA-IE3" firstAttribute="top" secondItem="kMa-bS-0Po" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="8fb-Xt-yn7"/>
-                            <constraint firstItem="rcB-Fh-fSs" firstAttribute="top" secondItem="lfu-Qf-tCS" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="A5S-u4-IQG"/>
-                            <constraint firstItem="Dku-1y-2kW" firstAttribute="leading" secondItem="I4F-LU-rlE" secondAttribute="leading" type="default" id="C1w-Jj-4Rt"/>
-                            <constraint firstItem="QdF-ze-TP9" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Evt-p1-Aeu"/>
-                            <constraint firstItem="ly9-xm-MOC" firstAttribute="top" secondItem="rq5-sI-7Sy" secondAttribute="top" constant="58" id="JDE-XY-tdO"/>
-                            <constraint firstItem="QdF-ze-TP9" firstAttribute="top" secondItem="AUO-aH-OWE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Kzj-Cl-4ag"/>
-                            <constraint firstAttribute="trailing" secondItem="78F-WB-0ha" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="MME-Fz-SB0"/>
-                            <constraint firstItem="lfu-Qf-tCS" firstAttribute="top" secondItem="ly9-xm-MOC" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Nf6-yy-z7f"/>
-                            <constraint firstItem="EdF-s2-Sa1" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="O2P-sz-EQw"/>
-                            <constraint firstItem="AUO-aH-OWE" firstAttribute="top" secondItem="EdF-s2-Sa1" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Pt9-ZC-EsF"/>
-                            <constraint firstAttribute="trailing" secondItem="lfu-Qf-tCS" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="XCO-lv-lrO"/>
-                            <constraint firstItem="I4F-LU-rlE" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="11" id="YAD-CC-Uve"/>
-                            <constraint firstItem="aOf-iA-IE3" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="YEN-Xp-YRA"/>
-                            <constraint firstItem="kMa-bS-0Po" firstAttribute="top" secondItem="rcB-Fh-fSs" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="aHg-Og-asm"/>
-                            <constraint firstItem="lfu-Qf-tCS" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="apn-qD-l60"/>
-                            <constraint firstItem="kMa-bS-0Po" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bIu-dT-ADx"/>
-                            <constraint firstItem="EdF-s2-Sa1" firstAttribute="top" secondItem="78F-WB-0ha" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="eDC-bq-Vxd"/>
-                            <constraint firstItem="ly9-xm-MOC" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="fcL-tf-meC"/>
-                            <constraint firstAttribute="trailing" secondItem="AUO-aH-OWE" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="gnb-os-Wx3"/>
-                            <constraint firstAttribute="trailing" secondItem="kMa-bS-0Po" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="hKE-si-FE5"/>
-                            <constraint firstItem="I4F-LU-rlE" firstAttribute="top" secondItem="rq5-sI-7Sy" secondAttribute="top" constant="-1" id="hRe-YR-zGc"/>
-                            <constraint firstItem="Dku-1y-2kW" firstAttribute="baseline" secondItem="I4F-LU-rlE" secondAttribute="baseline" type="default" id="hZn-oO-2HW"/>
-                            <constraint firstItem="78F-WB-0ha" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="htj-5L-Mql"/>
-                            <constraint firstAttribute="trailing" secondItem="aOf-iA-IE3" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="jXu-Fm-5lg"/>
-                            <constraint firstItem="78F-WB-0ha" firstAttribute="top" secondItem="aOf-iA-IE3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="kgm-0T-hZ1"/>
-                            <constraint firstAttribute="trailing" secondItem="rcB-Fh-fSs" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="n74-ei-0B1"/>
-                            <constraint firstItem="Dku-1y-2kW" firstAttribute="top" secondItem="I4F-LU-rlE" secondAttribute="top" type="default" id="ncv-bq-YBF"/>
-                            <constraint firstAttribute="trailing" secondItem="QdF-ze-TP9" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="qeM-cl-aGE"/>
-                            <constraint firstItem="AUO-aH-OWE" firstAttribute="leading" secondItem="rq5-sI-7Sy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="sd3-X0-aMt"/>
-                            <constraint firstAttribute="trailing" secondItem="EdF-s2-Sa1" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="vd5-sF-FgO"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="6RO-T6-0gH"/>
+                    <navigationItem key="navigationItem" title="New Brew" id="6RO-T6-0gH">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="MW9-Kc-jKt">
+                            <connections>
+                                <action selector="saveButtonAction:" destination="XNu-ZC-T7L" id="gOn-0j-G1I"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="actionBarButton" destination="MW9-Kc-jKt" id="rOC-ig-xK8"/>
+                        <outlet property="activityIndicator" destination="rP7-2R-RTV" id="RFy-Vm-FUL"/>
                         <outlet property="drinkField" destination="lfu-Qf-tCS" id="Jcc-0r-j2H"/>
                         <outlet property="methodField" destination="rcB-Fh-fSs" id="34m-il-kUC"/>
                         <outlet property="milkField" destination="kMa-bS-0Po" id="fBH-AN-JPx"/>
                         <outlet property="nameField" destination="ly9-xm-MOC" id="Vc5-f9-h3T"/>
                         <outlet property="sizeField" destination="aOf-iA-IE3" id="51i-Ih-pDa"/>
                         <outlet property="sugarsField" destination="78F-WB-0ha" id="rfA-UW-4HF"/>
-                        <outlet property="sweetenersField" destination="EdF-s2-Sa1" id="kq5-4F-e4v"/>
                         <outlet property="timeField" destination="AUO-aH-OWE" id="7UO-qi-XAZ"/>
                     </connections>
                 </viewController>
@@ -365,103 +318,43 @@
             </objects>
             <point key="canvasLocation" x="1368" y="-357"/>
         </scene>
-        <!--Brulette Team View Controller-->
+        <!--Brulette Team View Controller - Team Name-->
         <scene sceneID="KHL-Hz-HNR">
             <objects>
                 <viewController id="XcJ-dC-OJv" customClass="bruletteTeamViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rsN-hN-Qxe"/>
+                        <viewControllerLayoutGuide type="bottom" id="A25-9A-q9w"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PtJ-Su-Ueb">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Team Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84V-QC-Dwj">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="Wzp-W8-W6T"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJ3-aY-95e">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Leave Team">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="leaveTeamAction:" destination="XcJ-dC-OJv" eventType="touchUpInside" id="Vml-iX-QCc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeM-rY-0pv">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Delete Team">
-                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteTeamAction:" destination="XcJ-dC-OJv" eventType="touchUpInside" id="pJg-Xq-001"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DwC-BC-fl2">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="b50-a7-hpK"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Start Round">
-                                    <color key="titleColor" red="0.32156863810000003" green="0.66274511810000003" blue="0.3058823645" alpha="1" colorSpace="deviceRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="startRoundAction:" destination="XcJ-dC-OJv" eventType="touchUpInside" id="Tro-p1-ygE"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7G-ex-J7m">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="Ep1-R1-4mf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Join Round">
-                                    <color key="titleColor" red="0.32156863810000003" green="0.66274511810000003" blue="0.3058823645" alpha="1" colorSpace="deviceRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="joinRoundAction:" destination="XcJ-dC-OJv" eventType="touchUpInside" id="Kgd-rt-Cuc"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="grd-dO-sco">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="grd-dO-sco">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="461"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="memberCell" id="y6K-6U-Ckx" customClass="bruletteMemberCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y6K-6U-Ckx" id="FE9-QF-RTk">
+                                            <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Team Member" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pg-pf-kMf">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Team Member" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7pg-pf-kMf">
+                                                    <rect key="frame" x="20" y="11" width="255" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="170" id="cMB-m3-Dxx"/>
+                                                        <constraint firstAttribute="width" constant="255" id="oL0-2a-F4c"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstItem="7pg-pf-kMf" firstAttribute="leading" secondItem="y6K-6U-Ckx" secondAttribute="leading" constant="20" type="default" id="qcA-Ze-Maj"/>
-                                            <constraint firstItem="7pg-pf-kMf" firstAttribute="top" secondItem="y6K-6U-Ckx" secondAttribute="top" constant="11" id="sPj-mw-yTb"/>
+                                            <constraint firstItem="7pg-pf-kMf" firstAttribute="leading" secondItem="y6K-6U-Ckx" secondAttribute="leading" constant="20" id="16u-hA-06A"/>
+                                            <constraint firstItem="7pg-pf-kMf" firstAttribute="top" secondItem="y6K-6U-Ckx" secondAttribute="top" constant="11" id="fUc-dw-cui"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="teamMemberLabel" destination="7pg-pf-kMf" id="rZG-hd-NVn"/>
@@ -473,126 +366,164 @@
                                     <outlet property="delegate" destination="XcJ-dC-OJv" id="cbn-Qq-6sa"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tUt-46-sqx">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="backAction:" destination="XcJ-dC-OJv" eventType="touchUpInside" id="E90-BK-6zO"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="biU-PM-GzK">
+                                <rect key="frame" x="0.0" y="453" width="320" height="115"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJ3-aY-95e">
+                                        <rect key="frame" x="216" y="65" width="84" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Leave Team">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="leaveTeamAction:" destination="XcJ-dC-OJv" eventType="touchUpInside" id="Vml-iX-QCc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeM-rY-0pv">
+                                        <rect key="frame" x="20" y="65" width="87" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Delete Team">
+                                            <color key="titleColor" red="1" green="0.40000000600000002" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteTeamAction:" destination="XcJ-dC-OJv" eventType="touchUpInside" id="pJg-Xq-001"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DwC-BC-fl2">
+                                        <rect key="frame" x="20" y="20" width="130" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="2lz-x1-Ups"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Start Round">
+                                            <color key="titleColor" red="0.32156863810000003" green="0.66274511810000003" blue="0.3058823645" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="startRoundAction:" destination="XcJ-dC-OJv" eventType="touchUpInside" id="Tro-p1-ygE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7G-ex-J7m">
+                                        <rect key="frame" x="165" y="20" width="130" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="igp-eG-2Qx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Join Round">
+                                            <color key="titleColor" red="0.32156863810000003" green="0.66274511810000003" blue="0.3058823645" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="joinRoundAction:" destination="XcJ-dC-OJv" eventType="touchUpInside" id="Kgd-rt-Cuc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="DwC-BC-fl2" firstAttribute="leading" secondItem="biU-PM-GzK" secondAttribute="leading" constant="20" id="1IJ-nb-tGZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="FeM-rY-0pv" secondAttribute="bottom" constant="20" id="3yB-SD-igG"/>
+                                    <constraint firstAttribute="trailing" secondItem="JJ3-aY-95e" secondAttribute="trailing" constant="20" id="5YB-PN-mlL"/>
+                                    <constraint firstItem="FeM-rY-0pv" firstAttribute="leading" secondItem="biU-PM-GzK" secondAttribute="leading" constant="20" id="BLF-u8-fiD"/>
+                                    <constraint firstAttribute="trailing" secondItem="G7G-ex-J7m" secondAttribute="trailing" constant="25" id="IRr-M4-iwE"/>
+                                    <constraint firstItem="DwC-BC-fl2" firstAttribute="top" secondItem="biU-PM-GzK" secondAttribute="top" constant="20" id="SEn-kp-xB1"/>
+                                    <constraint firstAttribute="bottom" secondItem="JJ3-aY-95e" secondAttribute="bottom" constant="20" id="TlS-1R-UdH"/>
+                                    <constraint firstItem="G7G-ex-J7m" firstAttribute="top" secondItem="biU-PM-GzK" secondAttribute="top" constant="20" id="Whc-KP-iCM"/>
+                                    <constraint firstAttribute="height" constant="115" id="s9W-7Z-vTK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="grd-dO-sco" firstAttribute="trailing" secondItem="PtJ-Su-Ueb" secondAttribute="trailing" type="default" id="2fJ-e8-02a"/>
-                            <constraint firstItem="FeM-rY-0pv" firstAttribute="leading" secondItem="PtJ-Su-Ueb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Aal-hL-5c4"/>
-                            <constraint firstAttribute="bottom" secondItem="JJ3-aY-95e" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="CML-Td-oqk"/>
-                            <constraint firstItem="tUt-46-sqx" firstAttribute="top" secondItem="PtJ-Su-Ueb" secondAttribute="top" type="default" id="HKh-HW-ZuG"/>
-                            <constraint firstItem="G7G-ex-J7m" firstAttribute="baseline" secondItem="DwC-BC-fl2" secondAttribute="baseline" type="default" id="JV0-Sh-thJ"/>
-                            <constraint firstItem="tUt-46-sqx" firstAttribute="leading" secondItem="PtJ-Su-Ueb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="L8d-3t-sF1"/>
-                            <constraint firstItem="84V-QC-Dwj" firstAttribute="top" secondItem="tUt-46-sqx" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="No4-yO-bft"/>
-                            <constraint firstAttribute="bottom" secondItem="FeM-rY-0pv" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="SWz-xd-SWg"/>
-                            <constraint firstItem="grd-dO-sco" firstAttribute="leading" secondItem="PtJ-Su-Ueb" secondAttribute="leading" type="default" id="VdW-2F-EVr"/>
-                            <constraint firstItem="G7G-ex-J7m" firstAttribute="trailing" secondItem="84V-QC-Dwj" secondAttribute="trailing" type="default" id="Wvf-eA-xzd"/>
-                            <constraint firstAttribute="trailing" secondItem="JJ3-aY-95e" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="XJz-17-acA"/>
-                            <constraint firstItem="DwC-BC-fl2" firstAttribute="leading" secondItem="PtJ-Su-Ueb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Xd8-OC-306"/>
-                            <constraint firstItem="84V-QC-Dwj" firstAttribute="leading" secondItem="PtJ-Su-Ueb" secondAttribute="leading" constant="15" id="Zuu-st-BZN"/>
-                            <constraint firstItem="grd-dO-sco" firstAttribute="top" secondItem="84V-QC-Dwj" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ctv-63-RW3"/>
-                            <constraint firstItem="FeM-rY-0pv" firstAttribute="top" secondItem="DwC-BC-fl2" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="t2M-KZ-jln"/>
-                            <constraint firstItem="DwC-BC-fl2" firstAttribute="top" secondItem="grd-dO-sco" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ufA-m6-RUZ"/>
+                            <constraint firstItem="A25-9A-q9w" firstAttribute="top" secondItem="biU-PM-GzK" secondAttribute="bottom" id="8Xo-8T-5c2"/>
+                            <constraint firstItem="biU-PM-GzK" firstAttribute="trailing" secondItem="grd-dO-sco" secondAttribute="trailing" id="L41-iw-4FI"/>
+                            <constraint firstItem="A25-9A-q9w" firstAttribute="top" secondItem="grd-dO-sco" secondAttribute="bottom" constant="107" id="Rtc-Ec-gWi"/>
+                            <constraint firstItem="grd-dO-sco" firstAttribute="top" secondItem="PtJ-Su-Ueb" secondAttribute="top" id="Y6P-oC-1VA"/>
+                            <constraint firstItem="biU-PM-GzK" firstAttribute="leading" secondItem="PtJ-Su-Ueb" secondAttribute="leading" id="hrp-vt-SeX"/>
+                            <constraint firstItem="biU-PM-GzK" firstAttribute="leading" secondItem="grd-dO-sco" secondAttribute="leading" id="lwH-uU-VhY"/>
+                            <constraint firstItem="A25-9A-q9w" firstAttribute="top" secondItem="biU-PM-GzK" secondAttribute="bottom" id="wIb-aQ-7aY"/>
+                            <constraint firstAttribute="trailing" secondItem="biU-PM-GzK" secondAttribute="trailing" id="ySZ-UI-cmb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Emp-Kk-YtA"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Team Name" id="Bf5-30-b2H">
+                        <barButtonItem key="rightBarButtonItem" title="Rounds" id="vq8-km-d02">
+                            <connections>
+                                <segue destination="fqv-yS-zP8" kind="push" identifier="rounds" id="SRE-3Q-ESA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="deleteTeamButton" destination="FeM-rY-0pv" id="It8-aS-J9a"/>
                         <outlet property="joinRoundButton" destination="G7G-ex-J7m" id="UE2-Fg-KHx"/>
                         <outlet property="leaveTeamButton" destination="JJ3-aY-95e" id="XG3-DQ-U7r"/>
                         <outlet property="memberTable" destination="grd-dO-sco" id="b6N-TD-Oqp"/>
-                        <outlet property="teamNameLabel" destination="84V-QC-Dwj" id="kaz-39-AcD"/>
                         <segue destination="2" kind="push" identifier="returnSegue" id="ViB-n3-4e1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eR8-VS-HsA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="842" y="326"/>
+            <point key="canvasLocation" x="664" y="311"/>
+        </scene>
+        <!--Brulette Round View Controller - Rounds-->
+        <scene sceneID="uUk-Fp-qqk">
+            <objects>
+                <viewController id="fqv-yS-zP8" customClass="bruletteRoundViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uet-Oz-eju"/>
+                        <viewControllerLayoutGuide type="bottom" id="PdV-iG-CZK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AO2-lT-gkP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1up-ve-uJO">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="574"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="roundCell" textLabel="pPc-Q8-qAa" detailTextLabel="yul-vV-CGn" style="IBUITableViewCellStyleValue1" id="dmT-cN-2u8" customClass="bruletteRoundCell">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dmT-cN-2u8" id="0C0-o6-Sfz">
+                                            <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pPc-Q8-qAa">
+                                                    <rect key="frame" x="15" y="11" width="33" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yul-vV-CGn">
+                                                    <rect key="frame" x="237" y="11" width="44" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Rounds" id="CX8-CC-DLa"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="roundTableView" destination="1up-ve-uJO" id="WME-4g-soF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6IC-BU-0E1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1172" y="330"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="bruletteBrewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteBrewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="brewNameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="bruletteBrewViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteBrewViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backButtonAction:"/>
-                <relationship kind="outlet" name="brewTable" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="bruletteMemberCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteMemberCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="teamMemberLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="bruletteNewBrewViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteNewBrewViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backButtonAction:"/>
-                <relationship kind="action" name="saveButtonAction:"/>
-                <relationship kind="outlet" name="drinkField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="methodField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="milkField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="sizeField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="sugarsField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="sweetenersField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="timeField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="bruletteTeamCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteTeamCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="teamName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="teamSlug" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="bruletteTeamViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteTeamViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backAction:"/>
-                <relationship kind="action" name="deleteTeamAction:"/>
-                <relationship kind="action" name="joinRoundAction:"/>
-                <relationship kind="action" name="leaveTeamAction:"/>
-                <relationship kind="action" name="startRoundAction:"/>
-                <relationship kind="outlet" name="deleteTeamButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="joinRoundButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="leaveTeamButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="memberTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="teamNameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="bruletteViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/bruletteViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="joinTeam:"/>
-                <relationship kind="action" name="newBrew:"/>
-                <relationship kind="outlet" name="slugTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="teamTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

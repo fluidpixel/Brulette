@@ -16,6 +16,8 @@
 -(void)returnMemberId:(int)membershipId;
 -(void)returnTeams:(NSArray*)teamArray;
 -(void)returnRound:(NSDictionary*)round;
+-(void)returnRounds:(NSArray*)roundArray;
+-(void)returnOpenRounds:(NSArray*)roundArray;
 -(void)returnBrews:(NSArray*)brewArray;
 
 @end
@@ -25,6 +27,7 @@
 	NSMutableArray *items;
 	UITableView *teamTableView;
 	NSString *auth_token;
+	NSString *user_id;
 
 	//id<bruletteDataDelegate> delegate;
 }
@@ -35,12 +38,15 @@
 -(void)returnMemberId:(int)membershipId;
 -(void)returnRound:(NSDictionary *)round;
 -(void)returnBrews:(NSArray *)brews;
+-(void)returnUser:(NSDictionary *)user;
 
 @property(retain)UITableView *teamTableView;
 
 -(void)registerUser;
 -(void)loginUser;
 -(void)deleteUser;
+-(void)getUser;
+-(void)updateUser:(NSString*)name;
 
 -(void)getTeams;
 -(void)addTeam;
@@ -54,11 +60,16 @@
 
 -(void)updateTeamMembershipWithId:(NSString *)membershipId active:(NSString*)active;
 
+-(void)getRounds;
+-(void)getOpenRounds;
+-(void)joinRound:(NSString*)round_id;
 -(void)startRoundWithTeamId:(NSString *)teamId;
 
 -(void)getUsersBrews:(NSString *)brewType;
 -(void)newBrewWithBrew:(BruletteBrew *)brew;
 -(void)newBrewWithRound:(int)round;
+-(void)updateBrewWithBrew:(BruletteBrew *)brew;
+-(void)deleteBrew:(NSString*)brew_id;
 
 -(BruletteTeam*)returnTeam:(int)teamId;
 
@@ -73,5 +84,8 @@
 -(void)processGetTeamBySlug:(NSDictionary*)response;
 
 -(void)processStartRound:(NSDictionary*)response;
+-(void)processJoinedRound:(NSDictionary*)response;
+-(void)processGetRounds:(NSDictionary*)response;
+-(void)processGetOpenRounds:(NSDictionary*)response;
 
 @end
